@@ -47,8 +47,5 @@ function record(){
       }
     };
     
-    const onGainChange = (e) => device.parametersById.get(e.currentTarget.name).normalizedValue = parseFloat(e.currentTarget.value);
-    
-    document.querySelector("#start").onclick = run;
-    document.querySelector("#gain").onchange = onGainChange;
+
   })();
