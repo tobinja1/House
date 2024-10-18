@@ -6,22 +6,15 @@ let WAContext = window.AudioContext || window.webkitAudioContext;
 let context = new WAContext();
 
 var recordCheckbox = document.getElementById("record-checkbox");
-var recordValue = 0;
+// var recordValue = 0;
 var recordToggle;
-
-recordCheckbox.addEventListener('change', function() {
-    if (this.checked) {
-        recordValue = 1;
-    } else {
-      recordValue = 0;
-    }
-  });
+var device;
 
 const setup = async () => {
     let rawPatcher = await fetch("assets/rnbo/recorder.json");
     let patcher = await rawPatcher.json();
 
-    var device = await createDevice({ context, patcher });
+    device = await createDevice({ context, patcher });
     
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     // Create gain node and connect it to audio output
@@ -43,10 +36,10 @@ setup().then(function(){
     recordCheckbox.addEventListener('change', function() {
         if (this.checked) {
             recordToggle.value = 1;
-            console.log(recordToggle.value)
+            console.log(device.parametersById.get("recordToggle").value)
         } else {
             recordToggle.value = 0;
-            console.log(recordToggle.value)
+            console.log(device.parametersById.get("recordToggle").value)
         }
       });
 });
