@@ -1,2 +1,4 @@
 # House
- An interactive website to be used with Sky Hill's installation House
+ An interactive website for with Sky Hill's *House.*
+
+ Currently live [here.](https://tobinja1.github.io/House/)
