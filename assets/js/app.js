@@ -11,6 +11,8 @@ var recordToggle;
 var loopToggle;
 var device;
 
+document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
+
 const setup = async () => {
     const patcherRequest = new Request("assets/rnbo/recorder.json");
 	const patcherResponse = await fetch(patcherRequest);
