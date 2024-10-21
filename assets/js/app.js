@@ -5,11 +5,16 @@ const { createDevice } = RNBO;
 var WAContext = window.AudioContext || window.webkitAudioContext;
 var context = new WAContext();
 
-var recordCheckbox = document.getElementById("record-checkbox");
+var recordButton = document.getElementById("record-button");
+var playButton = document.getElementById("play-button");
 var loopCheckbox = document.getElementById("loop-checkbox");
 var recordToggle;
 var loopToggle;
+var playToggle;
 var device;
+
+//how long it takes to trigger record mode
+var recordLength = 250;
 
 document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
 
@@ -24,6 +29,7 @@ const setup = async () => {
     // Create gain node and connect it to audio output
     const source = context.createMediaStreamSource(stream);
   
+    playToggle = device.parametersById.get("playBang");
     recordToggle = device.parametersById.get("recordToggle");
     loopToggle = device.parametersById.get("loopToggle");
 
@@ -31,13 +37,15 @@ const setup = async () => {
     
     device.node.connect(context.destination);
 
-    recordCheckbox.addEventListener('change', function() {
-        if (this.checked) {
-            recordToggle.value = 1;
-        } else {
-            recordToggle.value = 0;
-        }
-      });
+    playButton.addEventListener('touchstart', function (){
+        playToggle.value = 1;
+        playToggle.value = 0;
+    });
+
+    playButton.addEventListener('click', function (){
+        playToggle.value = 1;
+        playToggle.value = 0;
+    });
 
       loopCheckbox.addEventListener('change', function() {
         if (this.checked) {
@@ -46,6 +54,31 @@ const setup = async () => {
             loopToggle.value = 0;
         }
       });
+
+      //the longpress function
+
+      (function() {
+
+        var mouseTimer;
+        function mouseDown() { 
+            mouseUp();
+            mouseTimer = window.setTimeout(execMouseDown,recordLength); //set timeout to fire in 2 seconds when the user presses mouse button down
+        }
+      
+        function mouseUp() { 
+            if (mouseTimer) window.clearTimeout(mouseTimer);  //cancel timer when mouse button is released
+            recordButton.style.backgroundColor = "white";
+            recordToggle.value = 0;
+        }
+      
+        function execMouseDown() { 
+            recordButton.style.backgroundColor = "red";
+            recordToggle.value = 1;
+        }
+        recordButton.addEventListener("mousedown", mouseDown);
+        document.body.addEventListener("mouseup", mouseUp);  //listen for mouse up event on body, not just the element you originally clicked on
+        
+      }());
 
     context.resume();
 };

@@ -14,3 +14,9 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.record-button {
+    border: 1px solid black;
+    background-color: white;
+    outline: none;
+}
