@@ -2,6 +2,7 @@
     font-family: 'Jost', sans-serif;
     font-weight: 500;
     font-size: 1rem;
+    --total-width: 90vw;
 }
 
 body {
@@ -39,7 +40,7 @@ body {
 }
 
 .thumb-toggle-container {
-    width: 80vw;
+    width: var(--total-width);
     height: 100%;
     background-image: url('../imgs/gradient.png');
     background-repeat: no-repeat;
@@ -58,13 +59,13 @@ body {
     align-items: center;
     justify-content: top;
     width: 100%;
-    height: 75vh;
+    height: 80vh;
 }
 
 .buttons-container {
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    width: var(--total-width);
 }
 
 .record-button-row, .play-button-row, .param-button-row {
