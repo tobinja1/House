@@ -99,6 +99,7 @@ body {
     height: 2rem;
     background-color: white;
     border-color: red;
+    color: black;
 }
 
 .play-button {
@@ -107,6 +108,7 @@ body {
     justify-content: center;
     height: 4.5rem;
     background-color: white;
+    color: black;
 }
 
 #record-button {
