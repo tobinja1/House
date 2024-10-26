@@ -39,7 +39,7 @@ body {
 }
 
 .thumb-toggle-container {
-    width: 90vw;
+    width: 80vw;
     height: 100%;
     background-image: url('../imgs/gradient.png');
     background-repeat: no-repeat;
@@ -58,13 +58,13 @@ body {
     align-items: center;
     justify-content: top;
     width: 100%;
-    height: 60vh;
+    height: 70vh;
 }
 
 .buttons-container {
     display: flex;
     flex-direction: column;
-    width: 90vw;
+    width: 80vw;
 }
 
 .record-button-row, .play-button-row, .param-button-row {
