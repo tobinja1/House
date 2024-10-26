@@ -5,17 +5,48 @@
     <script src="https://cdn.cycling74.com/rnbo/latest/rnbo.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>House</title>
 </head>
 <body>
-    <div class="checkbox-container">
-        <div class="individual-checkbox">
-            <input type="checkbox" name="loop-checkbox" id="loop-checkbox">
-            <label for="loop-checkbox">loop</label>
+    <div class="full-container">
+        <div class="thumb-toggle-container round-border big-margin" style="overflow: hidden;">
+            <div class="thumb-toggle-line" style="margin-top: 50%;"></div>
+            <div class="thumb-toggle-line" style="transform: rotateZ(90deg); margin-top: -1.75%;"></div>
         </div>
-        <div class="individual-checkbox" style="margin-left: 3rem;">
-            <button class="record-button" id="record-button">hold me to record</button>
-            <button class="record-button" id="play-button">press me to play</button>
+        <div class="buttons-container">
+            <div class="param-button-row big-margin">
+                <button class="param-button round-border button-width" id="toggle">toggle</button>
+                <button class="param-button round-border button-width" id="pitch">pitch</button>
+                <button class="param-button round-border button-width" id="crop">crop</button>
+                <button class="param-button round-border button-width" id="feedback">feedback</button>
+            </div>
+            <div class="record-button-row small-margin">
+                <button class="record-button round-border button-width" id="record1">rec 1</button>
+                <button class="record-button round-border button-width" id="record2">rec 2</button>
+                <button class="record-button round-border button-width" id="record3">rec 3</button>
+                <button class="record-button round-border button-width" id="record4">rec 4</button>
+            </div>
+            <div class="play-button-row big-margin">
+                <button class="play-button round-border button-width" id="play1">play 1</button>
+                <button class="play-button round-border button-width" id="play2">play 2</button>
+                <button class="play-button round-border button-width" id="play3">play 3</button>
+                <button class="play-button round-border button-width" id="play4">play 4</button>
+            </div>
+            <div class="record-button-row small-margin">
+                <button class="record-button round-border button-width" id="record5">rec 5</button>
+                <button class="record-button round-border button-width" id="record6">rec 6</button>
+                <button class="record-button round-border button-width" id="record7">rec 7</button>
+                <button class="record-button round-border button-width" id="record8">rec 8</button>
+            </div>
+            <div class="play-button-row">
+                <button class="play-button round-border button-width" id="play5">play 5</button>
+                <button class="play-button round-border button-width" id="play6">play 6</button>
+                <button class="play-button round-border button-width" id="play7">play 7</button>
+                <button class="play-button round-border button-width" id="play8">play 8</button>
+            </div>
         </div>
     </div>
 </body>

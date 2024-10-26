@@ -67,13 +67,13 @@ const setup = async () => {
       
         function mouseUp() { 
             if (mouseTimer) window.clearTimeout(mouseTimer);  //cancel timer when mouse button is released
-            recordButton.style.backgroundColor = "white";
             recordToggle.value = 0;
+            recordButton.style.background = "linear-gradient(0.25turn, red, white 0%)"
         }
       
         function execMouseDown() { 
-            recordButton.style.backgroundColor = "red";
             recordToggle.value = 1;
+            recordButton.style.background = "linear-gradient(0.25turn, red, white 100%)"
         }
         recordButton.addEventListener("mousedown", mouseDown);
         document.body.addEventListener("mouseup", mouseUp);  //listen for mouse up event on body, not just the element you originally clicked on
