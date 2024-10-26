@@ -31,12 +31,20 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
+    align-items: center;
     justify-content: space-between;
 }
 
 .burger {
     height: 30px;
     width: 30px;
+    padding-right: 2vw;
+    margin-top: 0.25rem;
+}
+
+.burgerline {
+    margin-bottom: 0.25rem;
+    border-width: 1px;
 }
 
 .thumb-toggle-container {
