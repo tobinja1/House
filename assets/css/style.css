@@ -4,6 +4,7 @@
     font-weight: bold;
     font-size: 1rem;
     --total-width: 90vw;
+    --onpressed-color: rgba(0,103,238,0.2);
 }
 
 body {
@@ -119,6 +120,10 @@ body {
     height: 5rem;
     background-color: white;
     color: black;
+}
+
+.play-button:active {
+    background-color: var(--onpressed-color);
 }
 
 #record-button {
