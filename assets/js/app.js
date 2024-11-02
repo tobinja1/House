@@ -34,6 +34,15 @@ var record6 = document.getElementById("record6");
 var record7 = document.getElementById("record7");
 var record8 = document.getElementById("record8");
 
+var play1 = document.getElementById("play1");
+var play2 = document.getElementById("play2");
+var play3 = document.getElementById("play3");
+var play4 = document.getElementById("play4");
+var play5 = document.getElementById("play5");
+var play6 = document.getElementById("play6");
+var play7 = document.getElementById("play7");
+var play8 = document.getElementById("play8");
+
 var toggleButton = document.getElementById("toggle");
 var pitchButton = document.getElementById("pitch");
 var cropButton = document.getElementById("crop");
@@ -47,10 +56,8 @@ var device;
 //how long it takes to trigger record mode
 var recordLength = 250;
 
-document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
-
 const setup = async () => {
-    const patcherRequest = new Request("assets/rnbo/recorder.json");
+    const patcherRequest = new Request("assets/rnbo/houseVer1.json");
 	const patcherResponse = await fetch(patcherRequest);
 	const patcher = await patcherResponse.json();
 
@@ -59,10 +66,24 @@ const setup = async () => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     // Create gain node and connect it to audio output
     const source = context.createMediaStreamSource(stream);
-  
-    playToggle = device.parametersById.get("playBang");
-    recordToggle = device.parametersById.get("recordToggle");
-    loopToggle = device.parametersById.get("loopToggle");
+
+    r1 = device.parametersById.get("r1");
+    r2 = device.parametersById.get("r2");
+    r3 = device.parametersById.get("r3");
+    r4 = device.parametersById.get("r4");
+    r5 = device.parametersById.get("r5");
+    r6 = device.parametersById.get("r6");
+    r7 = device.parametersById.get("r7");
+    r8 = device.parametersById.get("r8");
+
+    p1 = device.parametersById.get("p1");
+    p2 = device.parametersById.get("p2");
+    p3 = device.parametersById.get("p3");
+    p4 = device.parametersById.get("p4");
+    p5 = device.parametersById.get("p5");
+    p6 = device.parametersById.get("p6");
+    p7 = device.parametersById.get("p7");
+    p8 = device.parametersById.get("p8");
 
     source.connect(device.node);
     
@@ -88,16 +109,16 @@ const setup = async () => {
 
     ///rec1
 
-
-
     record1.addEventListener('touchstart', function() {
         if(record1Bool = true){
             record1.style.backgroundColor = "red";
             record1.style.color = "white";
+            r1.value = 1;
         }
         else {
             record1.style.backgroundColor = "white";
             record1.style.color = "black";
+            r1.value = 0;
         }
         record1Bool != record1Bool;
         console.log(record1Bool);
@@ -108,10 +129,13 @@ const setup = async () => {
         if(record1Bool == true){
             record1.style.backgroundColor = "red";
             record1.style.color = "white";
+            r1.value = 1;
+            console.log("recording!");
         }
         else {
             record1.style.backgroundColor = "white";
             record1.style.color = "black";
+            r1.value = 0;
         }
     })
 
@@ -121,10 +145,12 @@ const setup = async () => {
         if(record1Bool = true){
             record2.style.backgroundColor = "red";
             record2.style.color = "white";
+            r2.value = 1;
         }
         else {
             record2.style.backgroundColor = "white";
             record2.style.color = "black";
+            r2.value = 0;
         }
         record2Bool != record2Bool;
     })
@@ -134,10 +160,12 @@ const setup = async () => {
         if(record3Bool == true){
             record2.style.backgroundColor = "red";
             record2.style.color = "white";
+            r2.value = 1;
         }
         else {
             record2.style.backgroundColor = "white";
             record2.style.color = "black";
+            r2.value = 0;
         }
     })
 
@@ -147,10 +175,12 @@ const setup = async () => {
         if(record3Bool = true){
             record3.style.backgroundColor = "red";
             record3.style.color = "white";
+            r3.value = 1;
         }
         else {
             record3.style.backgroundColor = "white";
             record3.style.color = "black";
+            r3.value = 0;
         }
         record3Bool != record3Bool;
     })
@@ -160,10 +190,12 @@ const setup = async () => {
         if(record3Bool == true){
             record3.style.backgroundColor = "red";
             record3.style.color = "white";
+            r3.value = 1;
         }
         else {
             record3.style.backgroundColor = "white";
             record3.style.color = "black";
+            r3.value = 0;
         }
     })
 
@@ -173,10 +205,12 @@ const setup = async () => {
         if(record4Bool = true){
             record4.style.backgroundColor = "red";
             record4.style.color = "white";
+            r4.value = 1;
         }
         else {
             record4.style.backgroundColor = "white";
             record4.style.color = "black";
+            r4.value = 0;
         }
         record4Bool != record4Bool;
     })
@@ -185,10 +219,12 @@ const setup = async () => {
         if(record4Bool = true){
             record4.style.backgroundColor = "red";
             record4.style.color = "white";
+            r4.value = 1;
         }
         else {
             record4.style.backgroundColor = "white";
             record4.style.color = "black";
+            r4.value = 0;
         }
         record4Bool != record4Bool;
     })
@@ -199,10 +235,12 @@ const setup = async () => {
         if(record5Bool = true){
             record5.style.backgroundColor = "red";
             record5.style.color = "white";
+            r5.value = 1;
         }
         else {
             record5.style.backgroundColor = "white";
             record5.style.color = "black";
+            r5.value = 0;
         }
         record5Bool != record5Bool;
     })
@@ -211,10 +249,12 @@ const setup = async () => {
         if(record5Bool = true){
             record5.style.backgroundColor = "red";
             record5.style.color = "white";
+            r5.value = 1;
         }
         else {
             record5.style.backgroundColor = "white";
             record5.style.color = "black";
+            r5.value = 0;
         }
         record5Bool != record5Bool;
     })
@@ -225,10 +265,12 @@ const setup = async () => {
         if(record6Bool = true){
             record6.style.backgroundColor = "red";
             record6.style.color = "white";
+            r6.value = 1;
         }
         else {
             record6.style.backgroundColor = "white";
             record6.style.color = "black";
+            r6.value = 0;
         }
         record6Bool != record6Bool;
     })
@@ -237,10 +279,12 @@ const setup = async () => {
         if(record6Bool = true){
             record6.style.backgroundColor = "red";
             record6.style.color = "white";
+            r6.value = 1;
         }
         else {
             record6.style.backgroundColor = "white";
             record6.style.color = "black";
+            r6.value = 0;
         }
         record6Bool != record6Bool;
     })
@@ -251,10 +295,12 @@ const setup = async () => {
         if(record7Bool = true){
             record7.style.backgroundColor = "red";
             record7.style.color = "white";
+            r7.value = 1;
         }
         else {
             record7.style.backgroundColor = "white";
             record7.style.color = "black";
+            r7.value = 0;
         }
         record7Bool != record7Bool;
     })
@@ -263,10 +309,12 @@ const setup = async () => {
         if(record7Bool = true){
             record7.style.backgroundColor = "red";
             record7.style.color = "white";
+            r7.value = 1;
         }
         else {
             record7.style.backgroundColor = "white";
             record7.style.color = "black";
+            r7.value = 0;
         }
         record7Bool != record7Bool;
     })
@@ -277,10 +325,12 @@ const setup = async () => {
         if(record8Bool = true){
             record8.style.backgroundColor = "red";
             record8.style.color = "white";
+            r8.value = 1;
         }
         else {
             record8.style.backgroundColor = "white";
             record8.style.color = "black";
+            r8.value = 0;
         }
         record8Bool != record8Bool;
     })
@@ -289,12 +339,30 @@ const setup = async () => {
         if(record8Bool = true){
             record8.style.backgroundColor = "red";
             record8.style.color = "white";
+            r8.value = 1;
         }
         else {
             record8.style.backgroundColor = "white";
             record8.style.color = "black";
+            r8.value = 0;
         }
         record8Bool != record8Bool;
+    })
+
+    //play buttons
+
+    play1.addEventListener('touchstart', function(){
+        p1.value = 1;
+    })
+    play1.addEventListener('touchend', function(){
+        p1.value = 0;
+    })
+    play1.addEventListener('mousedown', function(){
+        p1.value = 1;
+        console.log(p1.value);
+    })
+    play1.addEventListener('mouseup', function(){
+        p1.value = 0;
     })
 
     //toggles
