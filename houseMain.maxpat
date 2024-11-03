@@ -649,7 +649,7 @@
 						}
 ,
 						"classnamespace" : "rnbo",
-						"rect" : [ 51.0, 118.0, 1381.0, 746.0 ],
+						"rect" : [ 51.0, 118.0, 1004.0, 746.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -12701,6 +12701,678 @@
 										"assistshowspatchername" : 0,
 										"title" : "grooveArray",
 										"boxes" : [ 											{
+												"box" : 												{
+													"color" : [ 0.862745098039216, 0.341176470588235, 0.847058823529412, 1.0 ],
+													"id" : "obj-201",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 72.0, 922.666694164276123, 31.0, 23.0 ],
+													"rnbo_classname" : "gate",
+													"rnbo_extra_attributes" : 													{
+														"outputs" : 1.0
+													}
+,
+													"rnbo_serial" : 8,
+													"rnbo_uniqueid" : "gate_obj-201",
+													"rnboinfo" : 													{
+														"needsInstanceInfo" : 1,
+														"argnames" : 														{
+															"onoff" : 															{
+																"attrOrProp" : 1,
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"inlet" : 1,
+																"type" : "number",
+																"defaultValue" : "0"
+															}
+,
+															"outputs" : 															{
+																"attrOrProp" : 2,
+																"digest" : "Number of outlets",
+																"defaultarg" : 1,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"type" : "number",
+																"defaultValue" : "1"
+															}
+
+														}
+,
+														"inputs" : [ 															{
+																"name" : "onoff",
+																"type" : "number",
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"docked" : 0
+															}
+, 															{
+																"name" : "input",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Incoming gated message",
+																"hot" : 1,
+																"docked" : 0
+															}
+ ],
+														"outputs" : [ 															{
+																"name" : "out1",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Gated Output 1",
+																"docked" : 0
+															}
+ ],
+														"helpname" : "gate",
+														"aliasOf" : "gate",
+														"classname" : "gate",
+														"operator" : 0,
+														"versionId" : 1220277655,
+														"changesPatcherIO" : 0
+													}
+,
+													"text" : "gate"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"color" : [ 0.862745098039216, 0.341176470588235, 0.847058823529412, 1.0 ],
+													"id" : "obj-200",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 404.000008702278137, 922.666694164276123, 31.0, 23.0 ],
+													"rnbo_classname" : "gate",
+													"rnbo_extra_attributes" : 													{
+														"outputs" : 1.0
+													}
+,
+													"rnbo_serial" : 7,
+													"rnbo_uniqueid" : "gate_obj-200",
+													"rnboinfo" : 													{
+														"needsInstanceInfo" : 1,
+														"argnames" : 														{
+															"onoff" : 															{
+																"attrOrProp" : 1,
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"inlet" : 1,
+																"type" : "number",
+																"defaultValue" : "0"
+															}
+,
+															"outputs" : 															{
+																"attrOrProp" : 2,
+																"digest" : "Number of outlets",
+																"defaultarg" : 1,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"type" : "number",
+																"defaultValue" : "1"
+															}
+
+														}
+,
+														"inputs" : [ 															{
+																"name" : "onoff",
+																"type" : "number",
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"docked" : 0
+															}
+, 															{
+																"name" : "input",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Incoming gated message",
+																"hot" : 1,
+																"docked" : 0
+															}
+ ],
+														"outputs" : [ 															{
+																"name" : "out1",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Gated Output 1",
+																"docked" : 0
+															}
+ ],
+														"helpname" : "gate",
+														"aliasOf" : "gate",
+														"classname" : "gate",
+														"operator" : 0,
+														"versionId" : 1220277655,
+														"changesPatcherIO" : 0
+													}
+,
+													"text" : "gate"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"color" : [ 0.862745098039216, 0.341176470588235, 0.847058823529412, 1.0 ],
+													"id" : "obj-199",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 721.33335018157959, 922.666694164276123, 31.0, 23.0 ],
+													"rnbo_classname" : "gate",
+													"rnbo_extra_attributes" : 													{
+														"outputs" : 1.0
+													}
+,
+													"rnbo_serial" : 6,
+													"rnbo_uniqueid" : "gate_obj-199",
+													"rnboinfo" : 													{
+														"needsInstanceInfo" : 1,
+														"argnames" : 														{
+															"onoff" : 															{
+																"attrOrProp" : 1,
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"inlet" : 1,
+																"type" : "number",
+																"defaultValue" : "0"
+															}
+,
+															"outputs" : 															{
+																"attrOrProp" : 2,
+																"digest" : "Number of outlets",
+																"defaultarg" : 1,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"type" : "number",
+																"defaultValue" : "1"
+															}
+
+														}
+,
+														"inputs" : [ 															{
+																"name" : "onoff",
+																"type" : "number",
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"docked" : 0
+															}
+, 															{
+																"name" : "input",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Incoming gated message",
+																"hot" : 1,
+																"docked" : 0
+															}
+ ],
+														"outputs" : [ 															{
+																"name" : "out1",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Gated Output 1",
+																"docked" : 0
+															}
+ ],
+														"helpname" : "gate",
+														"aliasOf" : "gate",
+														"classname" : "gate",
+														"operator" : 0,
+														"versionId" : 1220277655,
+														"changesPatcherIO" : 0
+													}
+,
+													"text" : "gate"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"color" : [ 0.862745098039216, 0.341176470588235, 0.847058823529412, 1.0 ],
+													"id" : "obj-198",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 1059.0, 918.0, 31.0, 23.0 ],
+													"rnbo_classname" : "gate",
+													"rnbo_extra_attributes" : 													{
+														"outputs" : 1.0
+													}
+,
+													"rnbo_serial" : 5,
+													"rnbo_uniqueid" : "gate_obj-198",
+													"rnboinfo" : 													{
+														"needsInstanceInfo" : 1,
+														"argnames" : 														{
+															"onoff" : 															{
+																"attrOrProp" : 1,
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"inlet" : 1,
+																"type" : "number",
+																"defaultValue" : "0"
+															}
+,
+															"outputs" : 															{
+																"attrOrProp" : 2,
+																"digest" : "Number of outlets",
+																"defaultarg" : 1,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"type" : "number",
+																"defaultValue" : "1"
+															}
+
+														}
+,
+														"inputs" : [ 															{
+																"name" : "onoff",
+																"type" : "number",
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"docked" : 0
+															}
+, 															{
+																"name" : "input",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Incoming gated message",
+																"hot" : 1,
+																"docked" : 0
+															}
+ ],
+														"outputs" : [ 															{
+																"name" : "out1",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Gated Output 1",
+																"docked" : 0
+															}
+ ],
+														"helpname" : "gate",
+														"aliasOf" : "gate",
+														"classname" : "gate",
+														"operator" : 0,
+														"versionId" : 1220277655,
+														"changesPatcherIO" : 0
+													}
+,
+													"text" : "gate"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"color" : [ 0.862745098039216, 0.341176470588235, 0.847058823529412, 1.0 ],
+													"id" : "obj-197",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 1042.0, 452.0, 31.0, 23.0 ],
+													"rnbo_classname" : "gate",
+													"rnbo_extra_attributes" : 													{
+														"outputs" : 1.0
+													}
+,
+													"rnbo_serial" : 4,
+													"rnbo_uniqueid" : "gate_obj-197",
+													"rnboinfo" : 													{
+														"needsInstanceInfo" : 1,
+														"argnames" : 														{
+															"onoff" : 															{
+																"attrOrProp" : 1,
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"inlet" : 1,
+																"type" : "number",
+																"defaultValue" : "0"
+															}
+,
+															"outputs" : 															{
+																"attrOrProp" : 2,
+																"digest" : "Number of outlets",
+																"defaultarg" : 1,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"type" : "number",
+																"defaultValue" : "1"
+															}
+
+														}
+,
+														"inputs" : [ 															{
+																"name" : "onoff",
+																"type" : "number",
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"docked" : 0
+															}
+, 															{
+																"name" : "input",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Incoming gated message",
+																"hot" : 1,
+																"docked" : 0
+															}
+ ],
+														"outputs" : [ 															{
+																"name" : "out1",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Gated Output 1",
+																"docked" : 0
+															}
+ ],
+														"helpname" : "gate",
+														"aliasOf" : "gate",
+														"classname" : "gate",
+														"operator" : 0,
+														"versionId" : 1220277655,
+														"changesPatcherIO" : 0
+													}
+,
+													"text" : "gate"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"color" : [ 0.862745098039216, 0.341176470588235, 0.847058823529412, 1.0 ],
+													"id" : "obj-187",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 737.25, 456.0, 31.0, 23.0 ],
+													"rnbo_classname" : "gate",
+													"rnbo_extra_attributes" : 													{
+														"outputs" : 1.0
+													}
+,
+													"rnbo_serial" : 3,
+													"rnbo_uniqueid" : "gate_obj-187",
+													"rnboinfo" : 													{
+														"needsInstanceInfo" : 1,
+														"argnames" : 														{
+															"onoff" : 															{
+																"attrOrProp" : 1,
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"inlet" : 1,
+																"type" : "number",
+																"defaultValue" : "0"
+															}
+,
+															"outputs" : 															{
+																"attrOrProp" : 2,
+																"digest" : "Number of outlets",
+																"defaultarg" : 1,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"type" : "number",
+																"defaultValue" : "1"
+															}
+
+														}
+,
+														"inputs" : [ 															{
+																"name" : "onoff",
+																"type" : "number",
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"docked" : 0
+															}
+, 															{
+																"name" : "input",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Incoming gated message",
+																"hot" : 1,
+																"docked" : 0
+															}
+ ],
+														"outputs" : [ 															{
+																"name" : "out1",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Gated Output 1",
+																"docked" : 0
+															}
+ ],
+														"helpname" : "gate",
+														"aliasOf" : "gate",
+														"classname" : "gate",
+														"operator" : 0,
+														"versionId" : 1220277655,
+														"changesPatcherIO" : 0
+													}
+,
+													"text" : "gate"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"color" : [ 0.862745098039216, 0.341176470588235, 0.847058823529412, 1.0 ],
+													"id" : "obj-56",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 412.25, 447.0, 31.0, 23.0 ],
+													"rnbo_classname" : "gate",
+													"rnbo_extra_attributes" : 													{
+														"outputs" : 1.0
+													}
+,
+													"rnbo_serial" : 2,
+													"rnbo_uniqueid" : "gate_obj-56",
+													"rnboinfo" : 													{
+														"needsInstanceInfo" : 1,
+														"argnames" : 														{
+															"onoff" : 															{
+																"attrOrProp" : 1,
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"inlet" : 1,
+																"type" : "number",
+																"defaultValue" : "0"
+															}
+,
+															"outputs" : 															{
+																"attrOrProp" : 2,
+																"digest" : "Number of outlets",
+																"defaultarg" : 1,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"type" : "number",
+																"defaultValue" : "1"
+															}
+
+														}
+,
+														"inputs" : [ 															{
+																"name" : "onoff",
+																"type" : "number",
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"docked" : 0
+															}
+, 															{
+																"name" : "input",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Incoming gated message",
+																"hot" : 1,
+																"docked" : 0
+															}
+ ],
+														"outputs" : [ 															{
+																"name" : "out1",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Gated Output 1",
+																"docked" : 0
+															}
+ ],
+														"helpname" : "gate",
+														"aliasOf" : "gate",
+														"classname" : "gate",
+														"operator" : 0,
+														"versionId" : 1220277655,
+														"changesPatcherIO" : 0
+													}
+,
+													"text" : "gate"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"color" : [ 0.862745098039216, 0.341176470588235, 0.847058823529412, 1.0 ],
+													"id" : "obj-55",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 87.0, 447.0, 31.0, 23.0 ],
+													"rnbo_classname" : "gate",
+													"rnbo_extra_attributes" : 													{
+														"outputs" : 1.0
+													}
+,
+													"rnbo_serial" : 1,
+													"rnbo_uniqueid" : "gate_obj-55",
+													"rnboinfo" : 													{
+														"needsInstanceInfo" : 1,
+														"argnames" : 														{
+															"onoff" : 															{
+																"attrOrProp" : 1,
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"inlet" : 1,
+																"type" : "number",
+																"defaultValue" : "0"
+															}
+,
+															"outputs" : 															{
+																"attrOrProp" : 2,
+																"digest" : "Number of outlets",
+																"defaultarg" : 1,
+																"isalias" : 0,
+																"aliases" : [  ],
+																"settable" : 1,
+																"attachable" : 0,
+																"isparam" : 0,
+																"deprecated" : 0,
+																"type" : "number",
+																"defaultValue" : "1"
+															}
+
+														}
+,
+														"inputs" : [ 															{
+																"name" : "onoff",
+																"type" : "number",
+																"digest" : "0 Closes gate, non-zero opens the corresponding gate outlet",
+																"defaultarg" : 2,
+																"docked" : 0
+															}
+, 															{
+																"name" : "input",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Incoming gated message",
+																"hot" : 1,
+																"docked" : 0
+															}
+ ],
+														"outputs" : [ 															{
+																"name" : "out1",
+																"type" : [ "bang", "number", "list" ],
+																"digest" : "Gated Output 1",
+																"docked" : 0
+															}
+ ],
+														"helpname" : "gate",
+														"aliasOf" : "gate",
+														"classname" : "gate",
+														"operator" : 0,
+														"versionId" : 1220277655,
+														"changesPatcherIO" : 0
+													}
+,
+													"text" : "gate"
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"color" : [ 0.862745098039216, 0.341176470588235, 0.341176470588235, 1.0 ],
 													"id" : "obj-104",
@@ -25790,7 +26462,7 @@
 													"numinlets" : 3,
 													"numoutlets" : 3,
 													"outlettype" : [ "", "", "" ],
-													"patching_rect" : [ 46.0, 411.0, 43.0, 23.0 ],
+													"patching_rect" : [ 48.5, 411.0, 43.0, 23.0 ],
 													"rnbo_classname" : "sel",
 													"rnbo_serial" : 32,
 													"rnbo_uniqueid" : "sel_obj-1",
@@ -27004,15 +27676,15 @@
  ],
 										"lines" : [ 											{
 												"patchline" : 												{
-													"destination" : [ "obj-268", 0 ],
-													"source" : [ "obj-1", 1 ]
+													"destination" : [ "obj-4", 0 ],
+													"source" : [ "obj-1", 0 ]
 												}
 
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-4", 0 ],
-													"source" : [ "obj-1", 0 ]
+													"destination" : [ "obj-55", 1 ],
+													"source" : [ "obj-1", 1 ]
 												}
 
 											}
@@ -27259,15 +27931,15 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-106", 0 ],
-													"source" : [ "obj-119", 1 ]
+													"destination" : [ "obj-126", 0 ],
+													"source" : [ "obj-119", 0 ]
 												}
 
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-126", 0 ],
-													"source" : [ "obj-119", 0 ]
+													"destination" : [ "obj-198", 1 ],
+													"source" : [ "obj-119", 1 ]
 												}
 
 											}
@@ -27569,15 +28241,15 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-128", 0 ],
-													"source" : [ "obj-141", 1 ]
+													"destination" : [ "obj-148", 0 ],
+													"source" : [ "obj-141", 0 ]
 												}
 
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-148", 0 ],
-													"source" : [ "obj-141", 0 ]
+													"destination" : [ "obj-199", 1 ],
+													"source" : [ "obj-141", 1 ]
 												}
 
 											}
@@ -27874,15 +28546,15 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-152", 0 ],
-													"source" : [ "obj-165", 1 ]
+													"destination" : [ "obj-172", 0 ],
+													"source" : [ "obj-165", 0 ]
 												}
 
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-172", 0 ],
-													"source" : [ "obj-165", 0 ]
+													"destination" : [ "obj-200", 1 ],
+													"source" : [ "obj-165", 1 ]
 												}
 
 											}
@@ -28156,8 +28828,8 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-174", 0 ],
-													"source" : [ "obj-188", 1 ]
+													"destination" : [ "obj-81", 0 ],
+													"source" : [ "obj-187", 0 ]
 												}
 
 											}
@@ -28165,6 +28837,13 @@
 												"patchline" : 												{
 													"destination" : [ "obj-195", 0 ],
 													"source" : [ "obj-188", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-201", 1 ],
+													"source" : [ "obj-188", 1 ]
 												}
 
 											}
@@ -28299,8 +28978,43 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-59", 0 ],
+													"source" : [ "obj-197", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-106", 0 ],
+													"source" : [ "obj-198", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-128", 0 ],
+													"source" : [ "obj-199", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-4", 1 ],
 													"source" : [ "obj-20", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-152", 0 ],
+													"source" : [ "obj-200", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-174", 0 ],
+													"source" : [ "obj-201", 0 ]
 												}
 
 											}
@@ -28751,7 +29465,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-6", 0 ],
+													"destination" : [ "obj-56", 1 ],
 													"source" : [ "obj-46", 1 ]
 												}
 
@@ -28903,6 +29617,20 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-268", 0 ],
+													"source" : [ "obj-55", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-6", 0 ],
+													"source" : [ "obj-56", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-72", 0 ],
 													"source" : [ "obj-57", 0 ]
 												}
@@ -29044,7 +29772,7 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-129", 0 ],
-													"order" : 3,
+													"order" : 5,
 													"source" : [ "obj-7", 0 ]
 												}
 
@@ -29052,7 +29780,7 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-153", 0 ],
-													"order" : 6,
+													"order" : 10,
 													"source" : [ "obj-7", 0 ]
 												}
 
@@ -29060,14 +29788,14 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-175", 0 ],
-													"order" : 8,
+													"order" : 14,
 													"source" : [ "obj-7", 0 ]
 												}
 
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-267", 0 ],
+													"destination" : [ "obj-187", 0 ],
 													"order" : 7,
 													"source" : [ "obj-7", 0 ]
 												}
@@ -29075,8 +29803,72 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-197", 0 ],
+													"order" : 3,
+													"source" : [ "obj-7", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-198", 0 ],
+													"order" : 2,
+													"source" : [ "obj-7", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-199", 0 ],
+													"order" : 8,
+													"source" : [ "obj-7", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-200", 0 ],
+													"order" : 12,
+													"source" : [ "obj-7", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-201", 0 ],
+													"order" : 16,
+													"source" : [ "obj-7", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-267", 0 ],
+													"order" : 13,
+													"source" : [ "obj-7", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-3", 0 ],
-													"order" : 4,
+													"order" : 6,
+													"source" : [ "obj-7", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-55", 0 ],
+													"order" : 15,
+													"source" : [ "obj-7", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-56", 0 ],
+													"order" : 11,
 													"source" : [ "obj-7", 0 ]
 												}
 
@@ -29092,7 +29884,7 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-8", 0 ],
-													"order" : 5,
+													"order" : 9,
 													"source" : [ "obj-7", 0 ]
 												}
 
@@ -29100,7 +29892,7 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-82", 0 ],
-													"order" : 2,
+													"order" : 4,
 													"source" : [ "obj-7", 0 ]
 												}
 
@@ -29121,7 +29913,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-59", 0 ],
+													"destination" : [ "obj-197", 1 ],
 													"source" : [ "obj-72", 1 ]
 												}
 
@@ -29410,7 +30202,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-81", 0 ],
+													"destination" : [ "obj-187", 1 ],
 													"source" : [ "obj-95", 1 ]
 												}
 
@@ -33779,7 +34571,7 @@
 						"export_config" : 						{
 							"web-export" : 							{
 								"json-web-export" : 								{
-									"file_name" : "recorder.json"
+									"file_name" : "houseVer1.json"
 								}
 
 							}

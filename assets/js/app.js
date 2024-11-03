@@ -20,10 +20,22 @@ var record6Bool = false;
 var record7Bool = false;
 var record8Bool = false;
 
+var p1Bool = false;
+var p2Bool = false;
+var p3Bool = false;
+var p4Bool = false;
+var p5Bool = false;
+var p6Bool = false;
+var p7Bool = false;
+var p8Bool = false;
+
+
 var toggleBool = false;
 var pitchBool = false;
 var cropBool = false;
 var feedbackBool = false;
+
+var pressed = 0;
 
 var record1 = document.getElementById("record1");
 var record2 = document.getElementById("record2");
@@ -53,8 +65,18 @@ var loopToggle;
 var playToggle;
 var device;
 
+var dragContainer = document.getElementById("drag-container");
+var dragContainerBoundingRect = dragContainer.getBoundingClientRect();
+var thumbDrag = document.getElementById("thumb-drag");
+var thumbWidth = 50;
+
+var adjClientX = 0;
+var adjClientY = 0;
+
 //how long it takes to trigger record mode
-var recordLength = 250;
+// var recordLength = 250;
+
+console.log(dragContainer.getBoundingClientRect())
 
 const setup = async () => {
     const patcherRequest = new Request("assets/rnbo/houseVer1.json");
@@ -85,6 +107,11 @@ const setup = async () => {
     p7 = device.parametersById.get("p7");
     p8 = device.parametersById.get("p8");
 
+    toggleParam = device.parametersById.get("toggleParam");
+    pitchParam = device.parametersById.get("pitchParam");
+    cropParam = device.parametersById.get("cropParam");
+    feedbackParam = device.parametersById.get("feedbackParam");
+
     source.connect(device.node);
     
     device.node.connect(context.destination);
@@ -106,6 +133,27 @@ const setup = async () => {
     //         loopToggle.value = 0;
     //     }
     //   });
+
+    //thumb dragging
+
+    function dragging(e) {
+        if(pressed == true && e.clientX >= dragContainerBoundingRect.left && e.clientX <= dragContainerBoundingRect.right && e.clientY >= dragContainerBoundingRect.top && e.clientY <= dragContainerBoundingRect.bottom){
+            thumbDrag.style.left = `${e.clientX - thumbWidth/2}px`;
+            thumbDrag.style.top = `${e.clientY - thumbWidth/2}px`;
+            adjClientX = e.clientX/dragContainerBoundingRect.right;
+            adjClientY = e.clientX/dragContainerBoundingRect.bottom;
+        }
+    }
+
+    dragContainer.addEventListener('mousedown', function(){
+        pressed = true;
+        console.log(pressed);
+    })
+
+    dragContainer.addEventListener('mouseup', function(){
+        pressed = false;
+    })
+    dragContainer.addEventListener('mousemove', dragging);
 
     ///rec1
 
@@ -372,10 +420,12 @@ const setup = async () => {
         if(toggleBool == true){
             toggleButton.style.backgroundColor = "gray";
             toggleButton.style.color = "white";
+            toggleParam.value = 1;
         }
         else {
             toggleButton.style.backgroundColor = "white";
             toggleButton.style.color = "gray";
+            toggleParam.value = 0;
         }
     })
 
@@ -384,10 +434,12 @@ const setup = async () => {
         if(toggleBool == true){
             toggleButton.style.backgroundColor = "gray";
             toggleButton.style.color = "white";
+            toggleParam.value = 1;
         }
         else {
             toggleButton.style.backgroundColor = "white";
             toggleButton.style.color = "gray";
+            toggleParam.value = 0;
         }
     })
 
@@ -396,10 +448,12 @@ const setup = async () => {
         if(pitchBool == true){
             pitchButton.style.backgroundColor = "gray";
             pitchButton.style.color = "white";
+            pitchParam.value = 1;
         }
         else {
             pitchButton.style.backgroundColor = "white";
             pitchButton.style.color = "gray";
+            pitchParam.value = 0;
         }
     })
 
@@ -408,10 +462,12 @@ const setup = async () => {
         if(pitchBool == true){
             pitchButton.style.backgroundColor = "gray";
             pitchButton.style.color = "white";
+            pitchParam.value = 1;
         }
         else {
             pitchButton.style.backgroundColor = "white";
             pitchButton.style.color = "gray";
+            pitchParam.value = 0;
         }
     })
 
@@ -420,10 +476,12 @@ const setup = async () => {
         if(cropBool == true){
             cropButton.style.backgroundColor = "gray";
             cropButton.style.color = "white";
+            cropParam.value = 1;
         }
         else {
             cropButton.style.backgroundColor = "white";
             cropButton.style.color = "gray";
+            cropParam.value = 0;
         }
     })
 
@@ -432,10 +490,12 @@ const setup = async () => {
         if(cropBool == true){
             cropButton.style.backgroundColor = "gray";
             cropButton.style.color = "white";
+            cropParam.value = 1;
         }
         else {
             cropButton.style.backgroundColor = "white";
             cropButton.style.color = "gray";
+            cropParam.value = 0;
         }
     })
 
@@ -444,10 +504,12 @@ const setup = async () => {
         if(feedbackBool == true){
             feedbackButton.style.backgroundColor = "gray";
             feedbackButton.style.color = "white";
+            feedbackParam.value = 1;
         }
         else {
             feedbackButton.style.backgroundColor = "white";
             feedbackButton.style.color = "gray";
+            feedbackParam.value = 0;
         }
     })
 
@@ -456,10 +518,12 @@ const setup = async () => {
         if(feedbackBool == true){
             feedbackButton.style.backgroundColor = "gray";
             feedbackButton.style.color = "white";
+            feedbackParam.value = 1;
         }
         else {
             feedbackButton.style.backgroundColor = "white";
             feedbackButton.style.color = "gray";
+            feedbackParam.value = 0;
         }
     })
 
