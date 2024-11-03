@@ -50,6 +50,7 @@ body {
 }
 
 .thumb-toggle-container {
+    position: relative;
     width: var(--total-width);
     height: 100%;
     background-image: url('../imgs/gradient.png');

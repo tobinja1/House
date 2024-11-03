@@ -137,23 +137,35 @@ const setup = async () => {
     //thumb dragging
 
     function dragging(e) {
-        if(pressed == true && e.clientX >= dragContainerBoundingRect.left && e.clientX <= dragContainerBoundingRect.right && e.clientY >= dragContainerBoundingRect.top && e.clientY <= dragContainerBoundingRect.bottom){
-            thumbDrag.style.left = `${e.clientX - thumbWidth/2}px`;
-            thumbDrag.style.top = `${e.clientY - thumbWidth/2}px`;
+        if(pressed == true && e.clientX >= dragContainerBoundingRect.left && e.clientX <= dragContainerBoundingRect.right - thumbWidth && e.clientY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.clientY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
             adjClientX = e.clientX/dragContainerBoundingRect.right;
-            adjClientY = e.clientX/dragContainerBoundingRect.bottom;
+            adjClientY = e.clientY/dragContainerBoundingRect.bottom;
+            thumbDrag.style.left = `${e.clientX - thumbWidth*1.5}px`;
+            thumbDrag.style.top = `${e.clientY - thumbWidth*1.5}px`;
+            console.log(adjClientX);
+            console.log(adjClientY);
         }
     }
 
     dragContainer.addEventListener('mousedown', function(){
         pressed = true;
         console.log(pressed);
-    })
+    });
 
     dragContainer.addEventListener('mouseup', function(){
         pressed = false;
-    })
+    });
     dragContainer.addEventListener('mousemove', dragging);
+
+    dragContainer.addEventListener('touchstart', function(){
+        pressed = true;
+        console.log(pressed);
+    });
+
+    dragContainer.addEventListener('touchend', function(){
+        pressed = false;
+    });
+    dragContainer.addEventListener('touchmove', dragging);
 
     ///rec1
 
