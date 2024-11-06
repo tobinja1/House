@@ -11,6 +11,8 @@ var context = new WAContext();
 
 var totalRecords = 8;
 
+var playPressedColor = "rgba(0,103,238,0.2)";
+
 var record1Bool = false;
 var record2Bool = false;
 var record3Bool = false;
@@ -19,6 +21,9 @@ var record5Bool = false;
 var record6Bool = false;
 var record7Bool = false;
 var record8Bool = false;
+
+var recordBools = [false, false, false, false, false, false, false, false];
+var playBools = [false, false, false, false, false, false, false, false];
 
 var p1Bool = false;
 var p2Bool = false;
@@ -167,258 +172,141 @@ const setup = async () => {
     });
     dragContainer.addEventListener('touchmove', dragging);
 
-    ///rec1
+    //record1
 
-    // record1.addEventListener('touchstart', function() {
-    //     if(record1Bool = true){
-    //         record1.style.backgroundColor = "red";
-    //         record1.style.color = "white";
-    //         r1.value = 1;
-    //     }
-    //     else {
-    //         record1.style.backgroundColor = "white";
-    //         record1.style.color = "black";
-    //         r1.value = 0;
-    //     }
-    //     record1Bool != record1Bool;
-    //     console.log(record1Bool);
-    // })
-
-    // record1.addEventListener('click', function() {
-    //     record1Bool = !record1Bool;
-    //     if(record1Bool == true){
-    //         record1.style.backgroundColor = "red";
-    //         record1.style.color = "white";
-    //         r1.value = 1;
-    //     }
-    //     else {
-    //         record1.style.backgroundColor = "white";
-    //         record1.style.color = "black";
-    //         r1.value = 0;
-    //     }
-    // })
-
+    record1.addEventListener('touchstart', function(){
+        recordOnToggle(0, r1, record1);
+    });
+    record1.addEventListener('touchend', function(){
+        recordOffToggle(r1, record1);
+    });
     record1.addEventListener('mousedown', function(){
-        recordOnToggle(record1Bool, r1, record1);
+        recordOnToggle(0, r1, record1);
     });
     record1.addEventListener('mouseup', function(){
         recordOffToggle(r1, record1);
     });
 
-    ///rec 2
+    //record2
 
-    record2.addEventListener('touchstart', function() {
-        if(record2Bool = true){
-            record2.style.backgroundColor = "red";
-            record2.style.color = "white";
-            r2.value = 1;
-        }
-        else {
-            record2.style.backgroundColor = "white";
-            record2.style.color = "black";
-            r2.value = 0;
-        }
-        record2Bool != record2Bool;
-    })
+    record2.addEventListener('touchstart', function(){
+        recordOnToggle(1, r2, record2);
+    });
+    record2.addEventListener('touchend', function(){
+        recordOffToggle(r2, record2);
+    });
+    record2.addEventListener('mousedown', function(){
+        recordOnToggle(1, r2, record2);
+    });
+    record2.addEventListener('mouseup', function(){
+        recordOffToggle(r2, record2);
+    });
 
-    record2.addEventListener('click', function() {
-        record2Bool = !record2Bool;
-        if(record3Bool == true){
-            record2.style.backgroundColor = "red";
-            record2.style.color = "white";
-            r2.value = 1;
-        }
-        else {
-            record2.style.backgroundColor = "white";
-            record2.style.color = "black";
-            r2.value = 0;
-        }
-    })
+    //record3
 
-    ////rec 3
+    record3.addEventListener('touchstart', function(){
+        recordOnToggle(2, r3, record3);
+    });
+    record3.addEventListener('touchend', function(){
+        recordOffToggle(r3, record3);
+    });
+    record3.addEventListener('mousedown', function(){
+        recordOnToggle(2, r3, record3);
+    });
+    record3.addEventListener('mouseup', function(){
+        recordOffToggle(r3, record3);
+    });
 
-    record3.addEventListener('touchstart', function() {
-        if(record3Bool = true){
-            record3.style.backgroundColor = "red";
-            record3.style.color = "white";
-            r3.value = 1;
-        }
-        else {
-            record3.style.backgroundColor = "white";
-            record3.style.color = "black";
-            r3.value = 0;
-        }
-        record3Bool != record3Bool;
-    })
+    //record4
 
-    record3.addEventListener('click', function() {
-        record3Bool = !record3Bool;
-        if(record3Bool == true){
-            record3.style.backgroundColor = "red";
-            record3.style.color = "white";
-            r3.value = 1;
-        }
-        else {
-            record3.style.backgroundColor = "white";
-            record3.style.color = "black";
-            r3.value = 0;
-        }
-    })
+    record4.addEventListener('touchstart', function(){
+        recordOnToggle(3, r4, record4);
+    });
+    record4.addEventListener('touchend', function(){
+        recordOffToggle(r4, record4);
+    });
+    record4.addEventListener('mousedown', function(){
+        recordOnToggle(3, r4, record4);
+    });
+    record4.addEventListener('mouseup', function(){
+        recordOffToggle(r4, record4);
+    });
 
-    ////rec 4
+    //record5
 
-    record4.addEventListener('touchstart', function() {
-        if(record4Bool = true){
-            record4.style.backgroundColor = "red";
-            record4.style.color = "white";
-            r4.value = 1;
-        }
-        else {
-            record4.style.backgroundColor = "white";
-            record4.style.color = "black";
-            r4.value = 0;
-        }
-        record4Bool != record4Bool;
-    })
+    record5.addEventListener('touchstart', function(){
+        recordOnToggle(4, r5, record5);
+    });
+    record5.addEventListener('touchend', function(){
+        recordOffToggle(r5, record5);
+    });
+    record5.addEventListener('mousedown', function(){
+        recordOnToggle(4, r5, record5);
+    });
+    record5.addEventListener('mouseup', function(){
+        recordOffToggle(r5, record5);
+    });
 
-    record4.addEventListener('click', function() {
-        if(record4Bool = true){
-            record4.style.backgroundColor = "red";
-            record4.style.color = "white";
-            r4.value = 1;
-        }
-        else {
-            record4.style.backgroundColor = "white";
-            record4.style.color = "black";
-            r4.value = 0;
-        }
-        record4Bool != record4Bool;
-    })
+    //record6
 
-    ///rec 5
+    record6.addEventListener('touchstart', function(){
+        recordOnToggle(5, r6, record6);
+    });
+    record6.addEventListener('touchend', function(){
+        recordOffToggle(r6, record6);
+    });
+    record6.addEventListener('mousedown', function(){
+        recordOnToggle(5, r6, record5);
+    });
+    record6.addEventListener('mouseup', function(){
+        recordOffToggle(r6, record6);
+    });
 
-    record5.addEventListener('touchstart', function() {
-        if(record5Bool = true){
-            record5.style.backgroundColor = "red";
-            record5.style.color = "white";
-            r5.value = 1;
-        }
-        else {
-            record5.style.backgroundColor = "white";
-            record5.style.color = "black";
-            r5.value = 0;
-        }
-        record5Bool != record5Bool;
-    })
+    //record7
 
-    record5.addEventListener('click', function() {
-        if(record5Bool = true){
-            record5.style.backgroundColor = "red";
-            record5.style.color = "white";
-            r5.value = 1;
-        }
-        else {
-            record5.style.backgroundColor = "white";
-            record5.style.color = "black";
-            r5.value = 0;
-        }
-        record5Bool != record5Bool;
-    })
+    record7.addEventListener('touchstart', function(){
+        recordOnToggle(6, r7, record7);
+    });
+    record7.addEventListener('touchend', function(){
+        recordOffToggle(r7, record7);
+    });
+    record7.addEventListener('mousedown', function(){
+        recordOnToggle(6, r7, record7);
+    });
+    record7.addEventListener('mouseup', function(){
+        recordOffToggle(r7, record7);
+    });
 
-    //rec 6
+    //record8
 
-    record6.addEventListener('touchstart', function() {
-        if(record6Bool = true){
-            record6.style.backgroundColor = "red";
-            record6.style.color = "white";
-            r6.value = 1;
-        }
-        else {
-            record6.style.backgroundColor = "white";
-            record6.style.color = "black";
-            r6.value = 0;
-        }
-        record6Bool != record6Bool;
-    })
+    record8.addEventListener('touchstart', function(){
+        recordOnToggle(7, r8, record8);
+    });
+    record8.addEventListener('touchend', function(){
+        recordOffToggle(r8, record8);
+    });
+    record8.addEventListener('mousedown', function(){
+        recordOnToggle(7, r8, record8);
+    });
+    record8.addEventListener('mouseup', function(){
+        recordOffToggle(r8, record8);
+    });
 
-    record6.addEventListener('click', function() {
-        if(record6Bool = true){
-            record6.style.backgroundColor = "red";
-            record6.style.color = "white";
-            r6.value = 1;
-        }
-        else {
-            record6.style.backgroundColor = "white";
-            record6.style.color = "black";
-            r6.value = 0;
-        }
-        record6Bool != record6Bool;
-    })
+    // for(let i = 0; i <= 8; i++){
+    //     recordButtons[i].addEventListener('mousedown', function(){
+    //         recordOnToggle(i, recordButtons[i], recordBools[i]);
+    //     })
+    //     recordButtons[i].addEventListener('mouseup', function(){
+    //         recordOffToggle(i, recordButtons[i]);
+    //     })
+    // }
 
-    ///rec 7
-
-    record7.addEventListener('touchstart', function() {
-        if(record7Bool = true){
-            record7.style.backgroundColor = "red";
-            record7.style.color = "white";
-            r7.value = 1;
-        }
-        else {
-            record7.style.backgroundColor = "white";
-            record7.style.color = "black";
-            r7.value = 0;
-        }
-        record7Bool != record7Bool;
-    })
-
-    record7.addEventListener('click', function() {
-        if(record7Bool = true){
-            record7.style.backgroundColor = "red";
-            record7.style.color = "white";
-            r7.value = 1;
-        }
-        else {
-            record7.style.backgroundColor = "white";
-            record7.style.color = "black";
-            r7.value = 0;
-        }
-        record7Bool != record7Bool;
-    })
-
-    //rec 8
-
-    record8.addEventListener('touchstart', function() {
-        if(record8Bool = true){
-            record8.style.backgroundColor = "red";
-            record8.style.color = "white";
-            r8.value = 1;
-        }
-        else {
-            record8.style.backgroundColor = "white";
-            record8.style.color = "black";
-            r8.value = 0;
-        }
-        record8Bool != record8Bool;
-    })
-
-    record8.addEventListener('click', function() {
-        if(record8Bool = true){
-            record8.style.backgroundColor = "red";
-            record8.style.color = "white";
-            r8.value = 1;
-        }
-        else {
-            record8.style.backgroundColor = "white";
-            record8.style.color = "black";
-            r8.value = 0;
-        }
-        record8Bool != record8Bool;
-    })
+    
 
     function recordOnToggle(targetBool, targetValue, targetElement){
         if(toggleBool == true){
-            targetBool = !targetBool;
-            if(targetBool == true){
+            recordBools[targetBool] =! recordBools[targetBool]
+            if(recordBools[targetBool] == true){
                 targetElement.style.backgroundColor = "red";
                 targetElement.style.color = "white";
                 targetValue.value = 1;
@@ -452,97 +340,150 @@ const setup = async () => {
     //play1
 
     play1.addEventListener('touchstart', function(){
-        if(toggleBool == true){
-            p1Bool = !p1Bool;
-            if(p1Bool == true){
-                p1.value = 1;
-            }
-            else{
-                p1.value = 0;
-            }
-        }
-        else if(toggleBool == false){
-            p1.value = 1;
-        }
-
+        playOnToggling(0, p1, play1);
     })
     play1.addEventListener('touchend', function(){
-        if(toggleBool == true){
-            console.log("on");
-        }
-        else if(toggleBool == false){
-            p1.value = 0;
-        }
-    })
-    // play1.addEventListener('mousedown', function(){
-    //     if(toggleBool == true){
-    //         p1Bool = !p1Bool;
-    //         if(p1Bool == true){
-    //             p1.value = 1;
-    //         }
-    //         else{
-    //             p1.value = 0;
-    //         }
-    //     }
-    //     else if(toggleBool == false){
-    //         p1.value = 1;
-    //     }
-
-    // })
-    // play1.addEventListener('mouseup', function(){
-    //     if(toggleBool == true){
-    //         console.log("on");
-    //     }
-    //     else if(toggleBool == false){
-    //         p1.value = 0;
-    //     }
-    // })
-
-
-    play1.addEventListener('touchstart', function(){
-        playOnToggling(p1Bool, p1);
-    })
-    play1.addEventListener('touchend', function(){
-        playOffToggling(p1);
+        playOffToggling(p1, play1);
     })
     play1.addEventListener('mousedown', function(){
-        playOnToggling(p1Bool, p1);
+        playOnToggling(0, p1, play1);
     })
     play1.addEventListener('mouseup', function(){
-        playOffToggling(p1);
+        playOffToggling(p1, play1);
     })
 
     //play2
 
+    play2.addEventListener('touchstart', function(){
+        playOnToggling(1, p2, play2);
+    })
+    play2.addEventListener('touchend', function(){
+        playOffToggling(p2, play2);
+    })
     play2.addEventListener('mousedown', function(){
-        playOnToggling(p2Bool, p2);
+        playOnToggling(1, p2, play2);
     })
     play2.addEventListener('mouseup', function(){
-        playOffToggling(p2);
+        playOffToggling(p2, play2);
     })
 
     //play3
 
-    function playOnToggling(targetBool, targetValue){
+    play3.addEventListener('touchstart', function(){
+        playOnToggling(2, p3, play3);
+    })
+    play3.addEventListener('touchend', function(){
+        playOffToggling(p3, play3);
+    })
+    play3.addEventListener('mousedown', function(){
+        playOnToggling(2, p3, play3);
+    })
+    play3.addEventListener('mouseup', function(){
+        playOffToggling(p3, play3);
+    })
+
+    //play4
+
+    play4.addEventListener('touchstart', function(){
+        playOnToggling(3, p4, play4);
+    })
+    play4.addEventListener('touchend', function(){
+        playOffToggling(p4, play4);
+    })
+    play4.addEventListener('mousedown', function(){
+        playOnToggling(3, p4, play4);
+    })
+    play4.addEventListener('mouseup', function(){
+        playOffToggling(p4, play4);
+    })
+
+    //play5
+
+    play5.addEventListener('touchstart', function(){
+        playOnToggling(4, p5, play5);
+    })
+    play5.addEventListener('touchend', function(){
+        playOffToggling(p5, play5);
+    })
+    play5.addEventListener('mousedown', function(){
+        playOnToggling(4, p5, play5);
+    })
+    play5.addEventListener('mouseup', function(){
+        playOffToggling(p5, play5);
+    })
+
+    //play6
+
+    play6.addEventListener('touchstart', function(){
+        playOnToggling(5, p6, play6);
+    })
+    play6.addEventListener('touchend', function(){
+        playOffToggling(p6, play6);
+    })
+    play6.addEventListener('mousedown', function(){
+        playOnToggling(5, p6, play6);
+    })
+    play6.addEventListener('mouseup', function(){
+        playOffToggling(p6, play6);
+    })
+
+    //play7
+
+    play7.addEventListener('touchstart', function(){
+        playOnToggling(6, p7, play7);
+    })
+    play7.addEventListener('touchend', function(){
+        playOffToggling(p7, play7);
+    })
+    play7.addEventListener('mousedown', function(){
+        playOnToggling(6, p7, play7);
+    })
+    play7.addEventListener('mouseup', function(){
+        playOffToggling(p7, play7);
+    })
+
+    //play8
+
+    play8.addEventListener('touchstart', function(){
+        playOnToggling(7, p8, play8);
+    })
+    play8.addEventListener('touchend', function(){
+        playOffToggling(p8, play8);
+    })
+    play8.addEventListener('mousedown', function(){
+        playOnToggling(7, p8, play8);
+    })
+    play8.addEventListener('mouseup', function(){
+        playOffToggling(p8, play8);
+    })
+
+
+    function playOnToggling(targetBool, targetValue, targetElement){
         if(toggleBool == true){
-            targetBool = !targetBool;
-            if(targetBool == true){
+            playBools[targetBool] =! playBools[targetBool];
+            console.log(playBools);
+            if(playBools[targetBool] == true){
+                targetElement.style.backgroundColor = playPressedColor;
                 targetValue.value = 1;
             }
             else{
+                targetElement.style.backgroundColor = "white";
                 targetValue.value = 0;
             }
         }
         else if(toggleBool == false){
             targetValue.value = 1;
+            targetElement.style.backgroundColor = playPressedColor;
         }
     }
 
-    function playOffToggling(targetValue){
+
+    function playOffToggling(targetValue, targetElement){
         if(toggleBool == true){
             console.log("on");
         }
         else if(toggleBool == false){
+            targetElement.style.backgroundColor = "white";
             targetValue.value = 0;
         }
     }
