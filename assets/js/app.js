@@ -60,6 +60,8 @@ var play6 = document.getElementById("play6");
 var play7 = document.getElementById("play7");
 var play8 = document.getElementById("play8");
 
+var playButtons = document.querySelectorAll(".play-button");
+
 var toggleButton = document.getElementById("toggle");
 var pitchButton = document.getElementById("pitch");
 var cropButton = document.getElementById("crop");
@@ -516,6 +518,7 @@ const setup = async () => {
             toggleButton.style.backgroundColor = "white";
             toggleButton.style.color = "gray";
             toggleParam.value = 0;
+            playButtons.style.backgroundColor = "white";
         }
     })
 
@@ -544,6 +547,7 @@ const setup = async () => {
             pitchButton.style.backgroundColor = "white";
             pitchButton.style.color = "gray";
             pitchParam.value = 0;
+            playButtons.style.backgroundColor = "white";
         }
     })
 
@@ -572,6 +576,7 @@ const setup = async () => {
             cropButton.style.backgroundColor = "white";
             cropButton.style.color = "gray";
             cropParam.value = 0;
+            playButtons.style.backgroundColor = "white";
         }
     })
 
@@ -600,6 +605,7 @@ const setup = async () => {
             feedbackButton.style.backgroundColor = "white";
             feedbackButton.style.color = "gray";
             feedbackParam.value = 0;
+            playButtons.style.backgroundColor = "white";
         }
     })
 
