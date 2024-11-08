@@ -170,7 +170,7 @@ const setup = async () => {
 
     dragContainer.addEventListener('mousedown', function(){
         pressed = true;
-        thumbDrag.style.backgroundColor = "red";
+        thumbDrag.style.left = "50px";
         console.log(pressed);
     });
 
