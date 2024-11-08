@@ -163,21 +163,14 @@ const setup = async () => {
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${e.clientX - thumbWidth*1.5}px`;
             thumbDrag.style.top = `${e.clientY - thumbWidth*1.5}px`;
-            console.log(adjClientX);
+            play1.innerHTML = adjClientX;
             console.log(adjClientY);
         }
     }
 
-    function showX(e) {
-        play1.innerHTML = e.pageX;
-    }
-
     dragContainer.addEventListener('mousedown', function(){
         pressed = true;
-        thumbDrag.style.backgroundColor = "red";
     });
-
-    dragContainer.addEventListener('mousedown', showX);
 
     dragContainer.addEventListener('mouseup', function(){
         pressed = false;
