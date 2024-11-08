@@ -178,8 +178,8 @@ const setup = async () => {
     });
 
     dragContainer.addEventListener('mousemove', dragging);
-    dragContainer.addEventListener('touchmove', function(){
-        play1.innerHTML = "dragging";
+    dragContainer.addEventListener('touchmove', function(e){
+        play1.innerHTML = e.pageX;
     });
     
 
