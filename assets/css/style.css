@@ -73,6 +73,10 @@ body {
     position: absolute;
 }
 
+.no-select {
+    user-select: none;
+}
+
 .inner-container {
     display: flex;
     flex-direction: column;
