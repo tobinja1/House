@@ -8,7 +8,7 @@
 }
 
 body {
-    
+    overflow-y: none;
 }
 
 .big-margin {
@@ -144,10 +144,4 @@ body {
     background: linear-gradient(0.25turn, red, white 0%);
     transition: all 0.2s ease-in-out;
 }
-
-@media (max-width: 600px) {
-    body {
-        overflow-y: none;
-    }
-  }
   
