@@ -158,7 +158,6 @@ const setup = async () => {
 
 
     function dragging(e) {
-        e.preventDefault();
         if(pressed == true && e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.pageY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
             adjClientX = e.pageX/dragContainerBoundingRect.right;
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
@@ -178,7 +177,7 @@ const setup = async () => {
         pressed = false;
     });
 
-    dragContainer.addEventListener('pointermove', dragging);
+    dragContainer.addEventListener('mousemove', dragging);
 
     // dragContainer.addEventListener('touchstart', function(){
     //     pressed = true;
