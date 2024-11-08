@@ -171,10 +171,6 @@ const setup = async () => {
         pressed = true;
     });
 
-    dragContainer.addEventListener('mousedown', function(){
-        setTimeout(dragging(), 100);
-    });
-
     dragContainer.addEventListener('mouseup', function(){
         pressed = false;
     });
