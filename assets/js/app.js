@@ -163,14 +163,14 @@ const setup = async () => {
     });
     dragContainer.addEventListener('mousemove', dragging);
 
-    dragContainer.addEventListener('touchstart', function(){
-        pressed = true;
-    });
+    // dragContainer.addEventListener('touchstart', function(){
+    //     pressed = true;
+    // });
 
-    dragContainer.addEventListener('touchend', function(){
-        pressed = false;
-    });
-    dragContainer.addEventListener('touchmove', dragging);
+    // dragContainer.addEventListener('touchend', function(){
+    //     pressed = false;
+    // });
+    // dragContainer.addEventListener('touchmove', dragging);
 
     //record1
 
@@ -189,12 +189,12 @@ const setup = async () => {
 
     //record2
 
-    record2.addEventListener('touchstart', function(){
-        recordOnToggle(1, r2, record2);
-    });
-    record2.addEventListener('touchend', function(){
-        recordOffToggle(r2, record2);
-    });
+    // record2.addEventListener('touchstart', function(){
+    //     recordOnToggle(1, r2, record2);
+    // });
+    // record2.addEventListener('touchend', function(){
+    //     recordOffToggle(r2, record2);
+    // });
     record2.addEventListener('mousedown', function(){
         recordOnToggle(1, r2, record2);
     });
@@ -204,12 +204,12 @@ const setup = async () => {
 
     //record3
 
-    record3.addEventListener('touchstart', function(){
-        recordOnToggle(2, r3, record3);
-    });
-    record3.addEventListener('touchend', function(){
-        recordOffToggle(r3, record3);
-    });
+    // record3.addEventListener('touchstart', function(){
+    //     recordOnToggle(2, r3, record3);
+    // });
+    // record3.addEventListener('touchend', function(){
+    //     recordOffToggle(r3, record3);
+    // });
     record3.addEventListener('mousedown', function(){
         recordOnToggle(2, r3, record3);
     });
@@ -219,12 +219,12 @@ const setup = async () => {
 
     //record4
 
-    record4.addEventListener('touchstart', function(){
-        recordOnToggle(3, r4, record4);
-    });
-    record4.addEventListener('touchend', function(){
-        recordOffToggle(r4, record4);
-    });
+    // record4.addEventListener('touchstart', function(){
+    //     recordOnToggle(3, r4, record4);
+    // });
+    // record4.addEventListener('touchend', function(){
+    //     recordOffToggle(r4, record4);
+    // });
     record4.addEventListener('mousedown', function(){
         recordOnToggle(3, r4, record4);
     });
@@ -234,12 +234,12 @@ const setup = async () => {
 
     //record5
 
-    record5.addEventListener('touchstart', function(){
-        recordOnToggle(4, r5, record5);
-    });
-    record5.addEventListener('touchend', function(){
-        recordOffToggle(r5, record5);
-    });
+    // record5.addEventListener('touchstart', function(){
+    //     recordOnToggle(4, r5, record5);
+    // });
+    // record5.addEventListener('touchend', function(){
+    //     recordOffToggle(r5, record5);
+    // });
     record5.addEventListener('mousedown', function(){
         recordOnToggle(4, r5, record5);
     });
@@ -249,12 +249,12 @@ const setup = async () => {
 
     //record6
 
-    record6.addEventListener('touchstart', function(){
-        recordOnToggle(5, r6, record6);
-    });
-    record6.addEventListener('touchend', function(){
-        recordOffToggle(r6, record6);
-    });
+    // record6.addEventListener('touchstart', function(){
+    //     recordOnToggle(5, r6, record6);
+    // });
+    // record6.addEventListener('touchend', function(){
+    //     recordOffToggle(r6, record6);
+    // });
     record6.addEventListener('mousedown', function(){
         recordOnToggle(5, r6, record5);
     });
@@ -264,12 +264,12 @@ const setup = async () => {
 
     //record7
 
-    record7.addEventListener('touchstart', function(){
-        recordOnToggle(6, r7, record7);
-    });
-    record7.addEventListener('touchend', function(){
-        recordOffToggle(r7, record7);
-    });
+    // record7.addEventListener('touchstart', function(){
+    //     recordOnToggle(6, r7, record7);
+    // });
+    // record7.addEventListener('touchend', function(){
+    //     recordOffToggle(r7, record7);
+    // });
     record7.addEventListener('mousedown', function(){
         recordOnToggle(6, r7, record7);
     });
@@ -279,12 +279,12 @@ const setup = async () => {
 
     //record8
 
-    record8.addEventListener('touchstart', function(){
-        recordOnToggle(7, r8, record8);
-    });
-    record8.addEventListener('touchend', function(){
-        recordOffToggle(r8, record8);
-    });
+    // record8.addEventListener('touchstart', function(){
+    //     recordOnToggle(7, r8, record8);
+    // });
+    // record8.addEventListener('touchend', function(){
+    //     recordOffToggle(r8, record8);
+    // });
     record8.addEventListener('mousedown', function(){
         recordOnToggle(7, r8, record8);
     });
@@ -354,12 +354,12 @@ const setup = async () => {
 
     //play2
 
-    play2.addEventListener('touchstart', function(){
-        playOnToggling(1, p2, play2);
-    })
-    play2.addEventListener('touchend', function(){
-        playOffToggling(p2, play2);
-    })
+    // play2.addEventListener('touchstart', function(){
+    //     playOnToggling(1, p2, play2);
+    // })
+    // play2.addEventListener('touchend', function(){
+    //     playOffToggling(p2, play2);
+    // })
     play2.addEventListener('mousedown', function(){
         playOnToggling(1, p2, play2);
     })
@@ -369,12 +369,12 @@ const setup = async () => {
 
     //play3
 
-    play3.addEventListener('touchstart', function(){
-        playOnToggling(2, p3, play3);
-    })
-    play3.addEventListener('touchend', function(){
-        playOffToggling(p3, play3);
-    })
+    // play3.addEventListener('touchstart', function(){
+    //     playOnToggling(2, p3, play3);
+    // })
+    // play3.addEventListener('touchend', function(){
+    //     playOffToggling(p3, play3);
+    // })
     play3.addEventListener('mousedown', function(){
         playOnToggling(2, p3, play3);
     })
@@ -384,12 +384,12 @@ const setup = async () => {
 
     //play4
 
-    play4.addEventListener('touchstart', function(){
-        playOnToggling(3, p4, play4);
-    })
-    play4.addEventListener('touchend', function(){
-        playOffToggling(p4, play4);
-    })
+    // play4.addEventListener('touchstart', function(){
+    //     playOnToggling(3, p4, play4);
+    // })
+    // play4.addEventListener('touchend', function(){
+    //     playOffToggling(p4, play4);
+    // })
     play4.addEventListener('mousedown', function(){
         playOnToggling(3, p4, play4);
     })
@@ -399,12 +399,12 @@ const setup = async () => {
 
     //play5
 
-    play5.addEventListener('touchstart', function(){
-        playOnToggling(4, p5, play5);
-    })
-    play5.addEventListener('touchend', function(){
-        playOffToggling(p5, play5);
-    })
+    // play5.addEventListener('touchstart', function(){
+    //     playOnToggling(4, p5, play5);
+    // })
+    // play5.addEventListener('touchend', function(){
+    //     playOffToggling(p5, play5);
+    // })
     play5.addEventListener('mousedown', function(){
         playOnToggling(4, p5, play5);
     })
@@ -414,12 +414,12 @@ const setup = async () => {
 
     //play6
 
-    play6.addEventListener('touchstart', function(){
-        playOnToggling(5, p6, play6);
-    })
-    play6.addEventListener('touchend', function(){
-        playOffToggling(p6, play6);
-    })
+    // play6.addEventListener('touchstart', function(){
+    //     playOnToggling(5, p6, play6);
+    // })
+    // play6.addEventListener('touchend', function(){
+    //     playOffToggling(p6, play6);
+    // })
     play6.addEventListener('mousedown', function(){
         playOnToggling(5, p6, play6);
     })
@@ -429,12 +429,12 @@ const setup = async () => {
 
     //play7
 
-    play7.addEventListener('touchstart', function(){
-        playOnToggling(6, p7, play7);
-    })
-    play7.addEventListener('touchend', function(){
-        playOffToggling(p7, play7);
-    })
+    // play7.addEventListener('touchstart', function(){
+    //     playOnToggling(6, p7, play7);
+    // })
+    // play7.addEventListener('touchend', function(){
+    //     playOffToggling(p7, play7);
+    // })
     play7.addEventListener('mousedown', function(){
         playOnToggling(6, p7, play7);
     })
@@ -444,12 +444,12 @@ const setup = async () => {
 
     //play8
 
-    play8.addEventListener('touchstart', function(){
-        playOnToggling(7, p8, play8);
-    })
-    play8.addEventListener('touchend', function(){
-        playOffToggling(p8, play8);
-    })
+    // play8.addEventListener('touchstart', function(){
+    //     playOnToggling(7, p8, play8);
+    // })
+    // play8.addEventListener('touchend', function(){
+    //     playOffToggling(p8, play8);
+    // })
     play8.addEventListener('mousedown', function(){
         playOnToggling(7, p8, play8);
     })
