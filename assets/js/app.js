@@ -178,7 +178,7 @@ const setup = async () => {
         pressed = false;
     });
 
-    dragContainer.addEventListener('mousemove', dragging);
+    dragContainer.addEventListener('pointermove', dragging);
 
     // dragContainer.addEventListener('touchstart', function(){
     //     pressed = true;
