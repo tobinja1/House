@@ -7,10 +7,6 @@
     --onpressed-color: rgba(0,103,238,0.2);
 }
 
-body {
-    overflow-y: hidden;
-}
-
 .big-margin {
     margin-bottom: 1.25rem;
 }
