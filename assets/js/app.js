@@ -491,19 +491,19 @@ const setup = async () => {
 
     //toggles
 
-    toggleButton.addEventListener('touchstart', function() {
-        toggleBool = !toggleBool;
-        if(toggleBool == true){
-            toggleButton.style.backgroundColor = "gray";
-            toggleButton.style.color = "white";
-            toggleParam.value = 1;
-        }
-        else {
-            toggleButton.style.backgroundColor = "white";
-            toggleButton.style.color = "gray";
-            toggleParam.value = 0;
-        }
-    })
+    // toggleButton.addEventListener('touchstart', function() {
+    //     toggleBool = !toggleBool;
+    //     if(toggleBool == true){
+    //         toggleButton.style.backgroundColor = "gray";
+    //         toggleButton.style.color = "white";
+    //         toggleParam.value = 1;
+    //     }
+    //     else {
+    //         toggleButton.style.backgroundColor = "white";
+    //         toggleButton.style.color = "gray";
+    //         toggleParam.value = 0;
+    //     }
+    // })
 
     toggleButton.addEventListener('click', function() {
         toggleBool = !toggleBool;
