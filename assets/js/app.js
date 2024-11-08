@@ -161,8 +161,8 @@ const setup = async () => {
         if(pressed == true && e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.pageY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
             adjClientX = e.pageX/dragContainerBoundingRect.right;
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
-            thumbDrag.style.left = `${e.clientX - thumbWidth*1.5}px`;
-            thumbDrag.style.top = `${e.clientY - thumbWidth*1.5}px`;
+            thumbDrag.style.left = `${e.pageX - thumbWidth*1.5}px`;
+            thumbDrag.style.top = `${e.pageY - thumbWidth*1.5}px`;
             console.log(adjClientY);
         }
     }
