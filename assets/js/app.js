@@ -167,6 +167,17 @@ const setup = async () => {
         }
     }
 
+    function draggingMobile(e) {
+        cX = e.touches[0].screenX;
+        cY = e.touches[0].screenY;
+        if(pressed == true && cX >= dragContainerBoundingRect.left && cX <= dragContainerBoundingRect.right - thumbWidth && cY >= dragContainerBoundingRect.top + thumbWidth*0.75 && cY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
+            adjClientX = cX/dragContainerBoundingRect.right;
+            adjClientY = cY/dragContainerBoundingRect.bottom;
+            thumbDrag.style.left = `${cX - thumbWidth*1.5}px`;
+            thumbDrag.style.top = `${cY - thumbWidth*1.5}px`;
+        }
+    }
+
     dragContainer.addEventListener('mousedown', function(){
         pressed = true;
     });
@@ -178,7 +189,8 @@ const setup = async () => {
     });
 
     dragContainer.addEventListener('mousemove', dragging);
-    dragContainer.addEventListener('drag', dragging);
+    dragContainer.addEventListener('mousemove', draggingMobile);
+    
 
     // dragContainer.addEventListener('touchstart', function(){
     //     pressed = true;
