@@ -169,13 +169,15 @@ const setup = async () => {
 
     dragContainer.addEventListener('mousedown', function(){
         pressed = true;
-        dragging();
     });
+
+    dragContainer.addEventListener('mousedown', dragging);
 
     dragContainer.addEventListener('mouseup', function(){
         pressed = false;
     });
-    dragContainer.addEventListener('mousemove', dragging, false);
+    
+    dragContainer.addEventListener('mousemove', dragging);
 
     // dragContainer.addEventListener('touchstart', function(){
     //     pressed = true;
