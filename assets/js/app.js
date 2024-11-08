@@ -174,12 +174,12 @@ const setup = async () => {
 
     //record1
 
-    record1.addEventListener('touchstart', function(){
-        recordOnToggle(0, r1, record1);
-    });
-    record1.addEventListener('touchend', function(){
-        recordOffToggle(r1, record1);
-    });
+    // record1.addEventListener('touchstart', function(){
+    //     recordOnToggle(0, r1, record1);
+    // });
+    // record1.addEventListener('touchend', function(){
+    //     recordOffToggle(r1, record1);
+    // });
     record1.addEventListener('mousedown', function(){
         recordOnToggle(0, r1, record1);
     });
@@ -339,12 +339,12 @@ const setup = async () => {
 
     //play1
 
-    play1.addEventListener('touchstart', function(){
-        playOnToggling(0, p1, play1);
-    })
-    play1.addEventListener('touchend', function(){
-        playOffToggling(p1, play1);
-    })
+    // play1.addEventListener('touchstart', function(){
+    //     playOnToggling(0, p1, play1);
+    // })
+    // play1.addEventListener('touchend', function(){
+    //     playOffToggling(p1, play1);
+    // })
     play1.addEventListener('mousedown', function(){
         playOnToggling(0, p1, play1);
     })
@@ -519,19 +519,19 @@ const setup = async () => {
         }
     })
 
-    pitchButton.addEventListener('touchstart', function() {
-        pitchBool = !pitchBool;
-        if(pitchBool == true){
-            pitchButton.style.backgroundColor = "gray";
-            pitchButton.style.color = "white";
-            pitchParam.value = 1;
-        }
-        else {
-            pitchButton.style.backgroundColor = "white";
-            pitchButton.style.color = "gray";
-            pitchParam.value = 0;
-        }
-    })
+    // pitchButton.addEventListener('touchstart', function() {
+    //     pitchBool = !pitchBool;
+    //     if(pitchBool == true){
+    //         pitchButton.style.backgroundColor = "gray";
+    //         pitchButton.style.color = "white";
+    //         pitchParam.value = 1;
+    //     }
+    //     else {
+    //         pitchButton.style.backgroundColor = "white";
+    //         pitchButton.style.color = "gray";
+    //         pitchParam.value = 0;
+    //     }
+    // })
 
     pitchButton.addEventListener('click', function() {
         pitchBool = !pitchBool;
@@ -547,19 +547,19 @@ const setup = async () => {
         }
     })
 
-    cropButton.addEventListener('touchstart', function() {
-        cropBool = !cropBool;
-        if(cropBool == true){
-            cropButton.style.backgroundColor = "gray";
-            cropButton.style.color = "white";
-            cropParam.value = 1;
-        }
-        else {
-            cropButton.style.backgroundColor = "white";
-            cropButton.style.color = "gray";
-            cropParam.value = 0;
-        }
-    })
+    // cropButton.addEventListener('touchstart', function() {
+    //     cropBool = !cropBool;
+    //     if(cropBool == true){
+    //         cropButton.style.backgroundColor = "gray";
+    //         cropButton.style.color = "white";
+    //         cropParam.value = 1;
+    //     }
+    //     else {
+    //         cropButton.style.backgroundColor = "white";
+    //         cropButton.style.color = "gray";
+    //         cropParam.value = 0;
+    //     }
+    // })
 
     cropButton.addEventListener('click', function() {
         cropBool = !cropBool;
@@ -575,19 +575,19 @@ const setup = async () => {
         }
     })
 
-    feedbackButton.addEventListener('touchstart', function() {
-        feedbackBool = !feedbackBool;
-        if(feedbackBool == true){
-            feedbackButton.style.backgroundColor = "gray";
-            feedbackButton.style.color = "white";
-            feedbackParam.value = 1;
-        }
-        else {
-            feedbackButton.style.backgroundColor = "white";
-            feedbackButton.style.color = "gray";
-            feedbackParam.value = 0;
-        }
-    })
+    // feedbackButton.addEventListener('touchstart', function() {
+    //     feedbackBool = !feedbackBool;
+    //     if(feedbackBool == true){
+    //         feedbackButton.style.backgroundColor = "gray";
+    //         feedbackButton.style.color = "white";
+    //         feedbackParam.value = 1;
+    //     }
+    //     else {
+    //         feedbackButton.style.backgroundColor = "white";
+    //         feedbackButton.style.color = "gray";
+    //         feedbackParam.value = 0;
+    //     }
+    // })
 
     feedbackButton.addEventListener('click', function() {
         feedbackBool = !feedbackBool;
@@ -602,46 +602,6 @@ const setup = async () => {
             feedbackParam.value = 0;
         }
     })
-
-
-
-    function boolToggle(target, innerBool) {
-        innerBool =! innerBool;
-        if(innerBool == true){
-            target.style.backgroundColor = "gray";
-            target.style.color = "white";
-        }
-        else {
-            record1.style.backgroundColor = "white";
-            record1.style.color = "gray";
-        }
-    }
-
-      //the longpress function
-
-    //   (function() {
-
-    //     var mouseTimer;
-    //     function mouseDown() { 
-    //         mouseUp();
-    //         mouseTimer = window.setTimeout(execMouseDown,recordLength); //set timeout to fire in 2 seconds when the user presses mouse button down
-    //     }
-      
-    //     function mouseUp() { 
-    //         if (mouseTimer) window.clearTimeout(mouseTimer);  //cancel timer when mouse button is released
-    //         recordToggle.value = 0;
-    //         recordButton.style.background = "linear-gradient(0.25turn, red, white 0%)"
-    //     }
-      
-    //     function execMouseDown() { 
-    //         recordToggle.value = 1;
-    //         recordButton.style.background = "linear-gradient(0.25turn, red, white 100%)"
-    //     }
-    //     recordButton.addEventListener("mousedown", mouseDown);
-    //     document.body.addEventListener("mouseup", mouseUp);  //listen for mouse up event on body, not just the element you originally clicked on
-        
-    //   }());
-
 
     context.resume();
 };
