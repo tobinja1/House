@@ -143,11 +143,25 @@ const setup = async () => {
 
     //thumb dragging
 
+    // // this one works for desktop
+    // function dragging(e) {
+    //     if(pressed == true && e.clientX >= dragContainerBoundingRect.left && e.clientX <= dragContainerBoundingRect.right - thumbWidth && e.clientY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.clientY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
+    //         e.preventDefault();
+    //         adjClientX = e.clientX/dragContainerBoundingRect.right;
+    //         adjClientY = e.clientY/dragContainerBoundingRect.bottom;
+    //         thumbDrag.style.left = `${e.clientX - thumbWidth*1.5}px`;
+    //         thumbDrag.style.top = `${e.clientY - thumbWidth*1.5}px`;
+    //         console.log(adjClientX);
+    //         console.log(adjClientY);
+    //     }
+    // }
+
+
     function dragging(e) {
-        if(pressed == true && e.clientX >= dragContainerBoundingRect.left && e.clientX <= dragContainerBoundingRect.right - thumbWidth && e.clientY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.clientY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
+        if(pressed == true && e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.pageY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
             e.preventDefault();
-            adjClientX = e.clientX/dragContainerBoundingRect.right;
-            adjClientY = e.clientY/dragContainerBoundingRect.bottom;
+            adjClientX = e.pageX/dragContainerBoundingRect.right;
+            adjClientY = e.pageY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${e.clientX - thumbWidth*1.5}px`;
             thumbDrag.style.top = `${e.clientY - thumbWidth*1.5}px`;
             console.log(adjClientX);
