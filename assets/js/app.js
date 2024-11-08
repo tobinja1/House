@@ -168,7 +168,7 @@ const setup = async () => {
     }
 
     function draggingMobile(e) {
-        if(e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.pageY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
+        if(e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top && e.pageY <= dragContainerBoundingRect.bottom){
             adjClientX = e.pageX/dragContainerBoundingRect.right;
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${e.pageX - thumbWidth*1.5}px`;
