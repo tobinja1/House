@@ -163,7 +163,6 @@ const setup = async () => {
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${e.clientX - thumbWidth*1.5}px`;
             thumbDrag.style.top = `${e.clientY - thumbWidth*1.5}px`;
-            play1.innerHTML = adjClientX;
             console.log(adjClientY);
         }
     }
@@ -172,12 +171,14 @@ const setup = async () => {
         pressed = true;
     });
 
-    dragContainer.addEventListener('mousedown', dragging);
+    dragContainer.addEventListener('mousedown', function(){
+        setTimeout(dragging(), 100);
+    });
 
     dragContainer.addEventListener('mouseup', function(){
         pressed = false;
     });
-    dragContainer.addEventListener('mousemove', dragging);
+    // dragContainer.addEventListener('mousemove', dragging);
 
     // dragContainer.addEventListener('touchstart', function(){
     //     pressed = true;
