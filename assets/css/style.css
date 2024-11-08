@@ -8,7 +8,7 @@
 }
 
 body {
-    overflow-y: none;
+    overflow-y: hidden;
 }
 
 .big-margin {
