@@ -143,6 +143,7 @@ const setup = async () => {
 
     function dragging(e) {
         if(pressed == true && e.clientX >= dragContainerBoundingRect.left && e.clientX <= dragContainerBoundingRect.right - thumbWidth && e.clientY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.clientY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
+            e.preventDefault();
             adjClientX = e.clientX/dragContainerBoundingRect.right;
             adjClientY = e.clientY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${e.clientX - thumbWidth*1.5}px`;
@@ -164,7 +165,6 @@ const setup = async () => {
 
     dragContainer.addEventListener('touchstart', function(){
         pressed = true;
-        console.log(pressed);
     });
 
     dragContainer.addEventListener('touchend', function(){
