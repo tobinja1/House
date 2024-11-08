@@ -168,10 +168,16 @@ const setup = async () => {
         }
     }
 
+    function showX(e) {
+        play1.innerHTML = e.pageX;
+    }
+
     dragContainer.addEventListener('mousedown', function(){
         pressed = true;
         thumbDrag.style.backgroundColor = "red";
     });
+
+    dragContainer.addEventListener('mousedown', showX);
 
     dragContainer.addEventListener('mouseup', function(){
         pressed = false;
