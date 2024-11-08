@@ -167,6 +167,16 @@ const setup = async () => {
         }
     }
 
+    function draggingMobile(e) {
+        if(e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.pageY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
+            adjClientX = e.pageX/dragContainerBoundingRect.right;
+            adjClientY = e.pageY/dragContainerBoundingRect.bottom;
+            thumbDrag.style.left = `${e.pageX - thumbWidth*1.5}px`;
+            thumbDrag.style.top = `${e.pageY - thumbWidth*1.5}px`;
+            console.log(adjClientY);
+        }
+    }
+
     dragContainer.addEventListener('mousedown', function(){
         pressed = true;
     });
@@ -178,10 +188,7 @@ const setup = async () => {
     });
 
     dragContainer.addEventListener('mousemove', dragging);
-    dragContainer.addEventListener('touchmove', function(e){
-        play1.innerHTML = e.pageX;
-    });
-    
+    dragContainer.addEventListener('touchmove', draggingMobile);
 
     // dragContainer.addEventListener('touchstart', function(){
     //     pressed = true;
