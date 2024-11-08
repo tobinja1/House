@@ -165,20 +165,18 @@ const setup = async () => {
             thumbDrag.style.top = `${e.clientY - thumbWidth*1.5}px`;
             console.log(adjClientX);
             console.log(adjClientY);
-            play1.innerHTML = e.clientX;
         }
     }
 
     dragContainer.addEventListener('mousedown', function(){
         pressed = true;
-        console.log(pressed);
+        play1.innerHTML = e.pageX;
     });
 
     dragContainer.addEventListener('mouseup', function(){
         pressed = false;
     });
     dragContainer.addEventListener('mousemove', dragging);
-    dragContainer.addEventListener('touchmove', dragging);
 
     // dragContainer.addEventListener('touchstart', function(){
     //     pressed = true;
