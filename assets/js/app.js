@@ -172,6 +172,8 @@ const setup = async () => {
         pressed = true;
     });
 
+    dragContainer.addEventListener('mousedown', dragging);
+
     dragContainer.addEventListener('mouseup', function(){
         pressed = false;
     });
