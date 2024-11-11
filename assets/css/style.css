@@ -105,6 +105,7 @@
 
 .disable-dbl-tap-zoom {
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
 .param-button {
