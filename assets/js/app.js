@@ -163,7 +163,6 @@ const setup = async () => {
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${e.pageX - thumbWidth*1.5}px`;
             thumbDrag.style.top = `${e.pageY - thumbWidth*1.5}px`;
-            console.log(adjClientY);
         }
     }
 
@@ -173,7 +172,7 @@ const setup = async () => {
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${e.pageX - thumbWidth}px`;
             thumbDrag.style.top = `${e.pageY - thumbWidth}px`;
-            console.log(adjClientY);
+            play1.innerHTML = adjClientX;
         }
     }
 
