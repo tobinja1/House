@@ -170,10 +170,8 @@ const setup = async () => {
         if(e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top && e.pageY <= dragContainerBoundingRect.bottom){
             adjClientX = e.pageX/dragContainerBoundingRect.right;
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
-            thumbDrag.style.left = `${e.pageX - thumbWidth}px`;
-            thumbDrag.style.top = `${e.pageY - thumbWidth}px`;
-            play1.innerHTML = dragContainerBoundingRect.right;
-            play2.innerHTML = e.pageX;
+            thumbDrag.style.left = `${e.pageX}px`;
+            thumbDrag.style.top = `${e.pageY}px`;
         }
     }
 
