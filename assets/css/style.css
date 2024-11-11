@@ -103,6 +103,10 @@
 
 }
 
+.disable-dbl-tap-zoom {
+    touch-action: manipulation;
+  }
+
 .param-button {
     display: flex;
     align-items: center;
