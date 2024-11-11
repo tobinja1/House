@@ -173,6 +173,7 @@ const setup = async () => {
             thumbDrag.style.left = `${e.pageX - thumbWidth}px`;
             thumbDrag.style.top = `${e.pageY - thumbWidth}px`;
             play1.innerHTML = dragContainerBoundingRect.right;
+            play2.innerHTML = e.pageX;
         }
     }
 
