@@ -156,6 +156,9 @@ const setup = async () => {
     //     }
     // }
 
+    function clamp(num, min, max) {
+        return Math.max(min, Math.min(num, max));
+      }
 
     function dragging(e) {
         if(pressed == true && e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.pageY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
@@ -170,8 +173,8 @@ const setup = async () => {
         if(e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top && e.pageY <= dragContainerBoundingRect.bottom){
             adjClientX = e.pageX/dragContainerBoundingRect.right;
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
-            thumbDrag.style.left = `${e.pageX - (thumbWidth/2)}px`;
-            thumbDrag.style.top = `${e.pageY - (thumbWidth/2)}px`;
+            thumbDrag.style.left = `${clamp(e.pageX, dragContainerBoundingRect.left, dragContainerBoundingRect.right)}px`;
+            thumbDrag.style.top = `${clamp(e.pageY, dragContainerBoundingRect.top, dragContainerBoundingRect.bottom)}px`;
         }
     }
 
