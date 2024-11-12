@@ -5,10 +5,6 @@ const { createDevice } = RNBO;
 var WAContext = window.AudioContext || window.webkitAudioContext;
 var context = new WAContext();
 
-// var recordButton = document.getElementById("record-button");
-// var playButton = document.getElementById("play-button");
-// var loopCheckbox = document.getElementById("loop-checkbox");
-
 var totalRecords = 8;
 
 var playPressedColor = "rgba(0,103,238,0.2)";
@@ -79,21 +75,57 @@ var thumbWidth = 50;
 
 var adjClientX = 0;
 var adjClientY = 0;
+var scaledX = 0;
+var scaledY = 0;
 
-//how long it takes to trigger record mode
-// var recordLength = 250;
+
+//ZONES FOR EFFECT INTERPOLATION, WITH DECIMAL BEING RADIUS/PERCENTAGE AREA OF SQUARE
+var deadzone = 0.1;
+var slightzone = 0.3;
+
+//PERCENTAGE OF EFFECT VALUE PASSED THROUGH IN THE SLIGHT ZONE
+var slightmodifier = 0.3;
+
+var effect1circlePos = [1,1];
+var effect2circlePos = [1,0];
+var effect3circlePos = [0,1];
+var effect4circlePos = [0,0];
+
+var effect1Dist = 0;
+var effect2Dist = 0;
+var effect3Dist = 0;
+var effect4Dist = 0;
+
+var effectCircleRadius = 0.55;
+
+var effect1dry = 0;
+var effect2dry = 0;
+var effect3dry = 0;
+var effect4dry = 0;
 
 console.log(dragContainer.getBoundingClientRect())
 
 const setup = async () => {
-    const patcherRequest = new Request("assets/rnbo/houseVer2.json");
-	const patcherResponse = await fetch(patcherRequest);
-	const patcher = await patcherResponse.json();
 
-    device = await createDevice({ context, patcher });
+    let response = await fetch("assets/rnbo/houseVer2.json");
+    const devicePatch = await response.json();
+    response = await fetch("assets/rnbo/houseDelay.json");
+    const effect1Patch = await response.json();
+    response = await fetch("assets/rnbo/houseReverbEffect.json");
+    const effect2Patch = await response.json();
+    response = await fetch("assets/rnbo/houseFlanger.json");
+    const effect3Patch = await response.json();
+    response = await fetch("assets/rnbo/houseCrush.json");
+    const effect4Patch = await response.json();
+
+    device = await createDevice({ context, patcher : devicePatch });
+
+    effect1 = await createDevice({ context, patcher : effect1Patch });
+    effect2 = await createDevice({ context, patcher : effect2Patch });
+    effect3 = await createDevice({ context, patcher : effect3Patch });
+    effect4 = await createDevice({ context, patcher : effect4Patch });
     
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    // Create gain node and connect it to audio output
     const source = context.createMediaStreamSource(stream);
 
     r1 = device.parametersById.get("r1");
@@ -119,45 +151,28 @@ const setup = async () => {
     cropParam = device.parametersById.get("cropParam");
     feedbackParam = device.parametersById.get("feedbackParam");
 
+    //getting effects params
+    effect1dry = effect1.parametersById.get("dryWet");
+    effect2dry = effect2.parametersById.get("dryWet");
+    effect3dry = effect3.parametersById.get("dryWet");
+    effect4dry = effect4.parametersById.get("dryWet");
+
     source.connect(device.node);
-    
-    device.node.connect(context.destination);
 
-    // playButton.addEventListener('touchstart', function (){
-    //     playToggle.value = 1;
-    //     playToggle.value = 0;
-    // });
-
-    // playButton.addEventListener('click', function (){
-    //     playToggle.value = 1;
-    //     playToggle.value = 0;
-    // });
-
-    //   loopCheckbox.addEventListener('change', function() {
-    //     if (this.checked) {
-    //         loopToggle.value = 1;
-    //     } else {
-    //         loopToggle.value = 0;
-    //     }
-    //   });
-
-    //thumb dragging
-
-    // // this one works for desktop
-    // function dragging(e) {
-    //     if(pressed == true && e.clientX >= dragContainerBoundingRect.left && e.clientX <= dragContainerBoundingRect.right - thumbWidth && e.clientY >= dragContainerBoundingRect.top + thumbWidth*0.75 && e.clientY <= dragContainerBoundingRect.bottom - thumbWidth*0.25){
-    //         e.preventDefault();
-    //         adjClientX = e.clientX/dragContainerBoundingRect.right;
-    //         adjClientY = e.clientY/dragContainerBoundingRect.bottom;
-    //         thumbDrag.style.left = `${e.clientX - thumbWidth*1.5}px`;
-    //         thumbDrag.style.top = `${e.clientY - thumbWidth*1.5}px`;
-    //         console.log(adjClientX);
-    //         console.log(adjClientY);
-    //     }
-    // }
+    device.node.connect(effect1.node);
+    effect1.node.connect(effect2.node);
+    effect2.node.connect(effect3.node);
+    effect3.node.connect(effect4.node);
+    effect4.node.connect(context.destination);
 
     function clamp(num, min, max) {
         return Math.max(min, Math.min(num, max));
+      }
+
+    function distance(x1, y1, x2, y2) {
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        return Math.sqrt(dx * dx + dy * dy);
       }
 
     function dragging(e) {
@@ -166,6 +181,39 @@ const setup = async () => {
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${e.pageX - thumbWidth*1.5}px`;
             thumbDrag.style.top = `${e.pageY - thumbWidth*1.5}px`;
+
+            effect1Dist = distance(adjClientX, adjClientY, effect1circlePos[0], effect1circlePos[1]);
+            effect2Dist = distance(adjClientX, adjClientY, effect2circlePos[0], effect2circlePos[1]);
+            effect3Dist = distance(adjClientX, adjClientY, effect3circlePos[0], effect3circlePos[1]);
+            effect4Dist = distance(adjClientX, adjClientY, effect4circlePos[0], effect4circlePos[1]);
+
+            if(effect1Dist <= effectCircleRadius){
+                effect1dry.value = 1 - (effect1Dist/effectCircleRadius);
+            }
+            else{
+                effect1dry.value = 0;
+            }
+
+            if(effect2Dist <= effectCircleRadius){
+                effect2dry.value = 1 - (effect2Dist/effectCircleRadius);
+            }
+            else{
+                effect2dry.value = 0;
+            }
+
+            if(effect3Dist <= effectCircleRadius){
+                effect3dry.value = 1 - (effect3Dist/effectCircleRadius);
+            }
+            else{
+                effect3dry.value = 0;
+            }
+
+            if(effect4Dist <= effectCircleRadius){
+                effect4dry.value = 1 - (effect4Dist/effectCircleRadius);
+            }
+            else{
+                effect4dry.value = 0;
+            }
         }
     }
 
@@ -175,6 +223,39 @@ const setup = async () => {
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
             thumbDrag.style.left = `${clamp(e.pageX, dragContainerBoundingRect.left, dragContainerBoundingRect.right)}px`;
             thumbDrag.style.top = `${clamp(e.pageY, dragContainerBoundingRect.top, dragContainerBoundingRect.bottom)}px`;
+
+            effect1Dist = distance(adjClientX, adjClientY, effect1circlePos[0], effect1circlePos[1]);
+            effect2Dist = distance(adjClientX, adjClientY, effect2circlePos[0], effect2circlePos[1]);
+            effect3Dist = distance(adjClientX, adjClientY, effect3circlePos[0], effect3circlePos[1]);
+            effect4Dist = distance(adjClientX, adjClientY, effect4circlePos[0], effect4circlePos[1]);
+
+            if(effect1Dist <= effectCircleRadius){
+                effect1dry.value = 1 - (effect1Dist/effectCircleRadius);
+            }
+            else{
+                effect1dry.value = 0;
+            }
+
+            if(effect2Dist <= effectCircleRadius){
+                effect2dry.value = 1 - (effect2Dist/effectCircleRadius);
+            }
+            else{
+                effect2dry.value = 0;
+            }
+
+            if(effect3Dist <= effectCircleRadius){
+                effect3dry.value = 1 - (effect3Dist/effectCircleRadius);
+            }
+            else{
+                effect3dry.value = 0;
+            }
+
+            if(effect4Dist <= effectCircleRadius){
+                effect4dry.value = 1 - (effect4Dist/effectCircleRadius);
+            }
+            else{
+                effect4dry.value = 0;
+            }
         }
     }
 
