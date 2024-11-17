@@ -239,8 +239,6 @@ const setup = async () => {
             effect4Dist = distance(adjClientX, adjClientY, effect4circlePos[0], effect4circlePos[1]);
             deadZoneDist = distance(adjClientX, adjClientY, deadZoneCirclePos[0], deadZoneCirclePos[1]);
 
-            play1.innerHTML = effect3Dist;
-
             if(effect1Dist <= effectCircleRadius){
                 effect1dry.value = 1 - (effect1Dist/effectCircleRadius);
             }
@@ -547,7 +545,7 @@ const setup = async () => {
             toggleButton.style.backgroundColor = "white";
             toggleButton.style.color = "gray";
             toggleParam.value = 0;
-            playButtons.style.backgroundColor = "white";
+            play1.style.backgroundColor = "white";
         }
     })
 
