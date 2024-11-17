@@ -68,6 +68,8 @@ var loopToggle;
 var playToggle;
 var device;
 
+//effects logic
+
 var dragContainer = document.getElementById("drag-container");
 var dragContainerBoundingRect = dragContainer.getBoundingClientRect();
 var thumbDrag = document.getElementById("thumb-drag");
@@ -78,25 +80,20 @@ var adjClientY = 0;
 var scaledX = 0;
 var scaledY = 0;
 
-
-//ZONES FOR EFFECT INTERPOLATION, WITH DECIMAL BEING RADIUS/PERCENTAGE AREA OF SQUARE
-var deadzone = 0.1;
-var slightzone = 0.3;
-
-//PERCENTAGE OF EFFECT VALUE PASSED THROUGH IN THE SLIGHT ZONE
-var slightmodifier = 0.3;
-
 var effect1circlePos = [1,1];
 var effect2circlePos = [1,0];
 var effect3circlePos = [0,1];
 var effect4circlePos = [0,0];
+var deadZoneCirclePos = [0.5, 0.5];
 
 var effect1Dist = 0;
 var effect2Dist = 0;
 var effect3Dist = 0;
 var effect4Dist = 0;
+var deadZoneDist = 0;
 
-var effectCircleRadius = 0.55;
+var effectCircleRadius = 0.75;
+var deadZoneCircleRadius = 0.125;
 
 var effect1dry = 0;
 var effect2dry = 0;
@@ -107,7 +104,7 @@ console.log(dragContainer.getBoundingClientRect())
 
 const setup = async () => {
 
-    let response = await fetch("assets/rnbo/houseVer2.json");
+    let response = await fetch("assets/rnbo/houseVer3.json");
     const devicePatch = await response.json();
     response = await fetch("assets/rnbo/houseDelay.json");
     const effect1Patch = await response.json();
@@ -186,6 +183,7 @@ const setup = async () => {
             effect2Dist = distance(adjClientX, adjClientY, effect2circlePos[0], effect2circlePos[1]);
             effect3Dist = distance(adjClientX, adjClientY, effect3circlePos[0], effect3circlePos[1]);
             effect4Dist = distance(adjClientX, adjClientY, effect4circlePos[0], effect4circlePos[1]);
+            deadZoneDist = distance(adjClientX, adjClientY, deadZoneCirclePos[0], deadZoneCirclePos[1])
 
             if(effect1Dist <= effectCircleRadius){
                 effect1dry.value = 1 - (effect1Dist/effectCircleRadius);
@@ -213,6 +211,17 @@ const setup = async () => {
             }
             else{
                 effect4dry.value = 0;
+            }
+
+            if(deadZoneDist <= deadZoneCircleRadius){
+                effect1dry.value = 0;
+                effect2dry.value = 0;
+                effect3dry.value = 0;
+                effect4dry.value = 0;
+                console.log("dead")
+            }
+            else {
+                console.log("live");
             }
         }
     }
@@ -289,132 +298,48 @@ const setup = async () => {
     // record1.addEventListener('touchend', function(){
     //     recordOffToggle(r1, record1);
     // });
-    record1.addEventListener('mousedown', function(){
-        recordOnToggle(0, r1, record1);
-    });
-    record1.addEventListener('mouseup', function(){
-        recordOffToggle(r1, record1);
+    // record1.addEventListener('mousedown', function(){
+    //     recordOnToggle(0, r1, record1);
+    // });
+    // record1.addEventListener('mouseup', function(){
+    //     recordOffToggle(r1, record1);
+    // });
+
+    record1.addEventListener('click', function(){
+        recordingToggle(0, r1, record1);
+    })
+
+    record2.addEventListener('click', function(){
+        recordingToggle(1, r2, record2);
     });
 
-    //record2
-
-    // record2.addEventListener('touchstart', function(){
-    //     recordOnToggle(1, r2, record2);
-    // });
-    // record2.addEventListener('touchend', function(){
-    //     recordOffToggle(r2, record2);
-    // });
-    record2.addEventListener('mousedown', function(){
-        recordOnToggle(1, r2, record2);
-    });
-    record2.addEventListener('mouseup', function(){
-        recordOffToggle(r2, record2);
+    record3.addEventListener('click', function(){
+        recordingToggle(2, r3, record3);
     });
 
-    //record3
 
-    // record3.addEventListener('touchstart', function(){
-    //     recordOnToggle(2, r3, record3);
-    // });
-    // record3.addEventListener('touchend', function(){
-    //     recordOffToggle(r3, record3);
-    // });
-    record3.addEventListener('mousedown', function(){
-        recordOnToggle(2, r3, record3);
-    });
-    record3.addEventListener('mouseup', function(){
-        recordOffToggle(r3, record3);
+    record4.addEventListener('click', function(){
+        recordingToggle(3, r4, record4);
     });
 
-    //record4
-
-    // record4.addEventListener('touchstart', function(){
-    //     recordOnToggle(3, r4, record4);
-    // });
-    // record4.addEventListener('touchend', function(){
-    //     recordOffToggle(r4, record4);
-    // });
-    record4.addEventListener('mousedown', function(){
-        recordOnToggle(3, r4, record4);
-    });
-    record4.addEventListener('mouseup', function(){
-        recordOffToggle(r4, record4);
+    record5.addEventListener('click', function(){
+        recordingToggle(4, r5, record5);
     });
 
-    //record5
-
-    // record5.addEventListener('touchstart', function(){
-    //     recordOnToggle(4, r5, record5);
-    // });
-    // record5.addEventListener('touchend', function(){
-    //     recordOffToggle(r5, record5);
-    // });
-    record5.addEventListener('mousedown', function(){
-        recordOnToggle(4, r5, record5);
-    });
-    record5.addEventListener('mouseup', function(){
-        recordOffToggle(r5, record5);
+    record6.addEventListener('click', function(){
+        recordingToggle(5, r6, record6);
     });
 
-    //record6
-
-    // record6.addEventListener('touchstart', function(){
-    //     recordOnToggle(5, r6, record6);
-    // });
-    // record6.addEventListener('touchend', function(){
-    //     recordOffToggle(r6, record6);
-    // });
-    record6.addEventListener('mousedown', function(){
-        recordOnToggle(5, r6, record5);
-    });
-    record6.addEventListener('mouseup', function(){
-        recordOffToggle(r6, record6);
-    });
-
-    //record7
-
-    // record7.addEventListener('touchstart', function(){
-    //     recordOnToggle(6, r7, record7);
-    // });
-    // record7.addEventListener('touchend', function(){
-    //     recordOffToggle(r7, record7);
-    // });
-    record7.addEventListener('mousedown', function(){
-        recordOnToggle(6, r7, record7);
-    });
     record7.addEventListener('mouseup', function(){
-        recordOffToggle(r7, record7);
+        recordingToggle(6, r7, record7);
     });
 
-    //record8
-
-    // record8.addEventListener('touchstart', function(){
-    //     recordOnToggle(7, r8, record8);
-    // });
-    // record8.addEventListener('touchend', function(){
-    //     recordOffToggle(r8, record8);
-    // });
-    record8.addEventListener('mousedown', function(){
-        recordOnToggle(7, r8, record8);
-    });
     record8.addEventListener('mouseup', function(){
-        recordOffToggle(r8, record8);
+        recordingToggle(7, r8, record8);
     });
 
-    // for(let i = 0; i <= 8; i++){
-    //     recordButtons[i].addEventListener('mousedown', function(){
-    //         recordOnToggle(i, recordButtons[i], recordBools[i]);
-    //     })
-    //     recordButtons[i].addEventListener('mouseup', function(){
-    //         recordOffToggle(i, recordButtons[i]);
-    //     })
-    // }
-
-    
-
-    function recordOnToggle(targetBool, targetValue, targetElement){
-        if(toggleBool == true){
-            recordBools[targetBool] =! recordBools[targetBool]
+    function recordingToggle(targetBool, targetValue, targetElement){
+        recordBools[targetBool] =! recordBools[targetBool]
             if(recordBools[targetBool] == true){
                 targetElement.style.backgroundColor = "red";
                 targetElement.style.color = "white";
@@ -425,23 +350,6 @@ const setup = async () => {
                 targetElement.style.color = "black";
                 targetValue.value = 0;
             }
-        }
-        else if(toggleBool == false){
-            targetElement.style.backgroundColor = "red";
-            targetElement.style.color = "white";
-            targetValue.value = 1;
-        }
-    }
-
-    function recordOffToggle(targetValue, targetElement){
-        if(toggleBool == true){
-            console.log("on");
-        }
-        else if(toggleBool == false){
-            targetElement.style.backgroundColor = "white";
-            targetElement.style.color = "black";
-            targetValue.value = 0;
-        }
     }
 
     //play buttons
