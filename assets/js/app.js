@@ -230,8 +230,8 @@ const setup = async () => {
         if(e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right - thumbWidth && e.pageY >= dragContainerBoundingRect.top && e.pageY <= dragContainerBoundingRect.bottom){
             adjClientX = e.pageX/dragContainerBoundingRect.right;
             adjClientY = e.pageY/dragContainerBoundingRect.bottom;
-            thumbDrag.style.left = `${clamp(e.pageX, dragContainerBoundingRect.left, dragContainerBoundingRect.right)}px`;
-            thumbDrag.style.top = `${clamp(e.pageY, dragContainerBoundingRect.top, dragContainerBoundingRect.bottom)}px`;
+            thumbDrag.style.left = `${e.pageX - thumbWidth*1.5}px`;
+            thumbDrag.style.top = `${e.pageY - thumbWidth*1.5}px`;
 
             effect1Dist = distance(adjClientX, adjClientY, effect1circlePos[0], effect1circlePos[1]);
             effect2Dist = distance(adjClientX, adjClientY, effect2circlePos[0], effect2circlePos[1]);

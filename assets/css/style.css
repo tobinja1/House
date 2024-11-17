@@ -145,4 +145,12 @@
     background: linear-gradient(0.25turn, red, white 0%);
     transition: all 0.2s ease-in-out;
 }
+
+/* for laptops and up */
+@media screen and (width >= 922px) {
+    .button-width {
+        width: 22%;
+    }
+  }
+  
   
