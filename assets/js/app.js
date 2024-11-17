@@ -233,6 +233,8 @@ const setup = async () => {
             thumbDrag.style.left = `${e.pageX - thumbWidth*1.5}px`;
             thumbDrag.style.top = `${e.pageY - thumbWidth*1.5}px`;
 
+            play1.innerHTML = adjClientX;
+
             effect1Dist = distance(adjClientX, adjClientY, effect1circlePos[0], effect1circlePos[1]);
             effect2Dist = distance(adjClientX, adjClientY, effect2circlePos[0], effect2circlePos[1]);
             effect3Dist = distance(adjClientX, adjClientY, effect3circlePos[0], effect3circlePos[1]);
