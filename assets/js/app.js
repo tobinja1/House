@@ -183,7 +183,7 @@ const setup = async () => {
             effect2Dist = distance(adjClientX, adjClientY, effect2circlePos[0], effect2circlePos[1]);
             effect3Dist = distance(adjClientX, adjClientY, effect3circlePos[0], effect3circlePos[1]);
             effect4Dist = distance(adjClientX, adjClientY, effect4circlePos[0], effect4circlePos[1]);
-            deadZoneDist = distance(adjClientX, adjClientY, deadZoneCirclePos[0], deadZoneCirclePos[1])
+            deadZoneDist = distance(adjClientX, adjClientY, deadZoneCirclePos[0], deadZoneCirclePos[1]);
 
             if(effect1Dist <= effectCircleRadius){
                 effect1dry.value = 1 - (effect1Dist/effectCircleRadius);
@@ -237,6 +237,7 @@ const setup = async () => {
             effect2Dist = distance(adjClientX, adjClientY, effect2circlePos[0], effect2circlePos[1]);
             effect3Dist = distance(adjClientX, adjClientY, effect3circlePos[0], effect3circlePos[1]);
             effect4Dist = distance(adjClientX, adjClientY, effect4circlePos[0], effect4circlePos[1]);
+            deadZoneDist = distance(adjClientX, adjClientY, deadZoneCirclePos[0], deadZoneCirclePos[1]);
 
             if(effect1Dist <= effectCircleRadius){
                 effect1dry.value = 1 - (effect1Dist/effectCircleRadius);
@@ -264,6 +265,17 @@ const setup = async () => {
             }
             else{
                 effect4dry.value = 0;
+            }
+
+            if(deadZoneDist <= deadZoneCircleRadius){
+                effect1dry.value = 0;
+                effect2dry.value = 0;
+                effect3dry.value = 0;
+                effect4dry.value = 0;
+                console.log("dead")
+            }
+            else {
+                console.log("live");
             }
         }
     }
