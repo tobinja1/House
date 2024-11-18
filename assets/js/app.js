@@ -653,10 +653,12 @@ startAudio();
 
 function popoutOpen(){
         popout.style.left = "0px";
+        document.body.style.overflowY = "visible";
     }
 
 function popoutClose(){
         popout.style.left = "140vw";
+        document.body.style.overflowY = "hidden";
     }
 
 burgerMenuOpen.addEventListener('click', popoutOpen);

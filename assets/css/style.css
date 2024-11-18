@@ -9,6 +9,7 @@
 
 body {
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 h1 {
@@ -216,6 +217,10 @@ h2 {
     margin-right: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.tut-image {
+    width: 100%;
 }
 
 /* for laptops and up */
