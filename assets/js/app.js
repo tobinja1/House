@@ -22,8 +22,12 @@ var record6Bool = false;
 var record7Bool = false;
 var record8Bool = false;
 
+var dudRecordBool = false;
+
 var recordBools = [false, false, false, false, false, false, false, false];
 var playBools = [false, false, false, false, false, false, false, false];
+
+var playDudBool = false;
 
 var p1Bool = false;
 var p2Bool = false;
@@ -40,6 +44,11 @@ var pitchBool = false;
 var cropBool = false;
 var feedbackBool = false;
 
+var toggleDudBool = false;
+var pitchDudBool = false;
+var cropDudBool = false;
+var feedbackDudBool = false;
+
 var pressed = 0;
 
 var record1 = document.getElementById("record1");
@@ -50,6 +59,8 @@ var record5 = document.getElementById("record5");
 var record6 = document.getElementById("record6");
 var record7 = document.getElementById("record7");
 var record8 = document.getElementById("record8");
+
+var recordDud = document.getElementById("recordnull");
 
 var play1 = document.getElementById("play1");
 var play2 = document.getElementById("play2");
@@ -62,10 +73,17 @@ var play8 = document.getElementById("play8");
 
 var playButtons = document.querySelectorAll(".play-button");
 
+var playDud = document.getElementById("playnull")
+
 var toggleButton = document.getElementById("toggle");
 var pitchButton = document.getElementById("pitch");
 var cropButton = document.getElementById("crop");
 var feedbackButton = document.getElementById("feedback");
+
+var toggleDud = document.getElementById("togglenull");
+var pitchDud = document.getElementById("pitchnull");
+var cropDud = document.getElementById("cropnull");
+var feedbackDud = document.getElementById("feedbacknull");
 
 var recordToggle;
 var loopToggle;
@@ -346,11 +364,11 @@ const setup = async () => {
         recordingToggle(5, r6, record6);
     });
 
-    record7.addEventListener('mouseup', function(){
+    record7.addEventListener('click', function(){
         recordingToggle(6, r7, record7);
     });
 
-    record8.addEventListener('mouseup', function(){
+    record8.addEventListener('click', function(){
         recordingToggle(7, r8, record8);
     });
 
@@ -366,6 +384,22 @@ const setup = async () => {
                 targetElement.style.color = "black";
                 targetValue.value = 0;
             }
+    }
+
+    recordDud.addEventListener('click', function(){
+        dudRecordingToggle(recordDud);
+    })
+
+    function dudRecordingToggle(targetElement) {
+        dudRecordBool = !dudRecordBool;
+        if(dudRecordBool == true){
+            targetElement.style.backgroundColor = "red";
+            targetElement.style.color = "white";
+        }
+        else {
+            targetElement.style.backgroundColor = "white";
+            targetElement.style.color = "black";
+        }
     }
 
     //play buttons
@@ -521,6 +555,22 @@ const setup = async () => {
         }
     }
 
+    playDud.addEventListener('click', function(){
+        playDudToggling(playDud);
+    });
+
+    function playDudToggling(targetElement) {
+        if(toggleDudBool == true){
+            playDudBool =! playDudBool;
+            if(playDudBool == true){
+                targetElement.style.backgroundColor = playPressedColor;
+            }
+            else{
+                targetElement.style.backgroundColor = "white";
+            }
+        }
+    }
+
 
     //toggles
 
@@ -639,6 +689,58 @@ const setup = async () => {
             playButtons.style.backgroundColor = "white";
         }
     })
+
+    //dud params
+
+    toggleDud.addEventListener('click', function() {
+        toggleDudBool = !toggleDudBool;
+        if(toggleDudBool == true){
+            toggleDud.style.backgroundColor = "gray";
+            toggleDud.style.color = "white";
+        }
+        else {
+            toggleDud.style.backgroundColor = "white";
+            toggleDud.style.color = "gray";
+        }
+    })
+
+    pitchDud.addEventListener('click', function() {
+        pitchDudBool = !pitchDudBool;
+        if(pitchDudBool == true){
+            pitchDud.style.backgroundColor = "gray";
+            pitchDud.style.color = "white";
+        }
+        else {
+            pitchDud.style.backgroundColor = "white";
+            pitchDud.style.color = "gray";
+        }
+    })
+
+    cropDud.addEventListener('click', function() {
+        cropDudBool = !cropDudBool;
+        if(cropDudBool == true){
+            cropDud.style.backgroundColor = "gray";
+            cropDud.style.color = "white";
+        }
+        else {
+            cropDud.style.backgroundColor = "white";
+            cropDud.style.color = "gray";
+        }
+    })
+
+    feedbackDud.addEventListener('click', function() {
+        feedbackDudBool = !feedbackDudBool;
+        if(feedbackDudBool == true){
+            feedbackDud.style.backgroundColor = "gray";
+            feedbackDud.style.color = "white";
+        }
+        else {
+            feedbackDud.style.backgroundColor = "white";
+            feedbackDud.style.color = "gray";
+        }
+    })
+
+    
 
     context.resume();
 };
