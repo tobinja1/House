@@ -7,6 +7,27 @@
     --onpressed-color: rgba(0,103,238,0.2);
 }
 
+body {
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+.subtext {
+    color: #676767;
+    font-size: 1rem;
+    margin-top: 0px;
+    margin-bottom: 0.25rem;
+
+}
+
 .big-margin {
     margin-bottom: 1.25rem;
 }
@@ -144,6 +165,57 @@
 #record-button {
     background: linear-gradient(0.25turn, red, white 0%);
     transition: all 0.2s ease-in-out;
+}
+
+#popout {
+    position: absolute;
+    left: 170vw;
+    top: 0px;
+    width: 100vw;
+    min-height: 20vh;
+    transition: all 0.5s ease-in-out;
+    background-color: white;
+    z-index: 998;
+}
+
+#burger-menu-close {
+    height: 30px;
+    width: 30px;
+    margin-left: auto;
+    padding-right: 2vw;
+    margin-top: 1rem;
+}
+
+.popout-content-container {
+    width: var(--total-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.house-popout-top {
+    width: 100%;
+}
+
+.house-popout-main {
+    width: 100%;
+}
+
+.popout-section-hed {
+    font-size: 1.6rem;
+    text-decoration: underline;
+    margin-bottom: 0px;
+}
+
+.popout-body {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* for laptops and up */

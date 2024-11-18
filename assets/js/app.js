@@ -5,6 +5,10 @@ const { createDevice } = RNBO;
 var WAContext = window.AudioContext || window.webkitAudioContext;
 var context = new WAContext();
 
+var burgerMenuOpen = document.getElementById("burger-menu-open");
+var burgerMenuClose = document.getElementById("burger-menu-close");
+var popout = document.getElementById("popout");
+
 var totalRecords = 8;
 
 var playPressedColor = "rgba(0,103,238,0.2)";
@@ -646,3 +650,15 @@ function startAudio() {
 }
 
 startAudio();
+
+function popoutOpen(){
+        popout.style.left = "0px";
+    }
+
+function popoutClose(){
+        popout.style.left = "140vw";
+    }
+
+burgerMenuOpen.addEventListener('click', popoutOpen);
+burgerMenuClose.addEventListener('click', popoutClose);
+

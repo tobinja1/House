@@ -14,12 +14,38 @@
     <title>House</title>
 </head>
 <body>
+    <div id="popout">
+        <div class="menu-and-icon-container">
+            <div id="burger-menu-close">
+                <div class="burgerline round-border" style="position: absolute; margin-top: 0.5em; width: 30px; transform: rotate(45deg);"></div>
+                <div class="burgerline round-border" style="position: absolute; margin-top: 0.5rem; width: 30px; transform: rotate(-45deg);"></div>
+            </div>
+        </div>
+        <div class="popout-content-container">
+            <div class="h1-container" style="display: flex; flex-direction: row; align-content: flex-start; align-items: baseline;">
+                <h1>house</h1>
+                <p class="subtext" style="margin-left: 0.25rem;">ver. 1.0</p>
+            </div>
+            <p class="subtext">by sky hill</p>
+            <p class="subtext">built by dayflower</p>
+            <div class="house-popout-top">
+                <h2 style="width: 100%; text-align: center; margin-bottom: 0px;">welcome to the house.</h2>
+                <p style="width: 100%; text-align: center; margin-top: 0.25rem;">here's how you play:</p>
+            </div>
+            <div class="house-popout-main">
+                <h2 class="popout-section-hed">recording:</h2>
+                <p class="popout-body">while playing house, you’ll be recording, playing back, and applying effects to audio. you have <u>8</u> channels of audio you can record into by pressing the <u>rec</u> buttons:</p>
+                <button class="record-button round-border button-width disable-dbl-tap-zoom centered" id="recordnull">rec 1</button>
+                <p class="popout-body">press it, and you’ll notice it turns red. <u>this means you’re recording any and all audio from your input device to the channel specified by the record button</u>. press it again to stop recording.</p>
+            </div>
+        </div>
+    </div>
     <div class="menu-and-icon-container">
         <div></div>
-        <div class="burger">
-            <div class="burgerline round-border"></div>
-            <div class="burgerline round-border"></div>
-            <div class="burgerline round-border"></div>
+        <div id="burger-menu-open" class="burger">
+            <div id="burgerline-one" class="burgerline round-border"></div>
+            <div id="burgerline-two" class="burgerline round-border"></div>
+            <div id="burgerline-three" class="burgerline round-border"></div>
         </div>
     </div>
     <div class="inner-container">
