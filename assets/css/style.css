@@ -1,7 +1,13 @@
+@font-face {
+    font-family: "RitaSmith";
+    src: url("/assets/fonts/RitaSmith.otf");
+}
+
 * {
-    font-family: 'Abel', sans-serif;
+    font-family: 'RitaSmith', sans-serif;
+    /* font-family: 'Abel', sans-serif; */
     /* font-family: 'Jost', sans-serif; */
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 1rem;
     --total-width: 90vw;
     --onpressed-color: rgba(0,103,238,0.2);
@@ -177,7 +183,10 @@ h2 {
     transition: all 0.5s ease-in-out;
     background-color: white;
     z-index: 998;
+    display: none;
 }
+
+
 
 #burger-menu-close {
     height: 30px;

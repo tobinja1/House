@@ -754,15 +754,25 @@ function startAudio() {
 startAudio();
 
 function popoutOpen(){
+        popout.style.display = "block"
+        setTimeout(() => {
         popout.style.left = "0px";
-        document.body.style.overflowY = "visible";
+        document.body.style.overflowY = "visible";;
+          }, "1");
+          
     }
 
 function popoutClose(){
+
         popout.style.left = "140vw";
         document.body.style.overflowY = "hidden";
+        setTimeout(() => {
+            popout.style.display = "none";
+              }, "500");
     }
 
 burgerMenuOpen.addEventListener('click', popoutOpen);
 burgerMenuClose.addEventListener('click', popoutClose);
+
+popoutClose;
 
