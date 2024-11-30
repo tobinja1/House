@@ -232,10 +232,17 @@ h2 {
     width: 100%;
 }
 
+#mobile-warning {
+    display: none;
+}
+
 /* for laptops and up */
 @media screen and (width >= 922px) {
     .button-width {
         width: 22%;
+    }
+    #mobile-warning {
+        display: block;
     }
   }
   
