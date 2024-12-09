@@ -249,11 +249,11 @@ const setup = async () => {
     }
 
     function draggingMobile(e) {
-        if(e.pageX >= dragContainerBoundingRect.left && e.pageX <= dragContainerBoundingRect.right && e.pageY >= dragContainerBoundingRect.top && e.pageY <= dragContainerBoundingRect.bottom){
-            adjClientX = e.pageX/dragContainerBoundingRect.right;
-            adjClientY = e.pageY/dragContainerBoundingRect.bottom;
-            thumbDrag.style.left = `${e.pageX - thumbWidth}px`;
-            thumbDrag.style.top = `${e.pageY - thumbWidth}px`;
+        if(e.changedTouches[0].pageX >= dragContainerBoundingRect.left && e.changedTouches[0].pageX <= dragContainerBoundingRect.right && e.changedTouches[0].pageY >= dragContainerBoundingRect.top && e.changedTouches[0].pageY<= dragContainerBoundingRect.bottom){
+            adjClientX = e.changedTouches[0].pageX/dragContainerBoundingRect.right;
+            adjClientY = e.changedTouches[0].pageY/dragContainerBoundingRect.bottom;
+            thumbDrag.style.left = `${e.changedTouches[0].pageX - thumbWidth}px`;
+            thumbDrag.style.top = `${e.changedTouches[0].pageY - thumbWidth}px`;
 
             effect1Dist = distance(adjClientX, adjClientY, effect1circlePos[0], effect1circlePos[1]);
             effect2Dist = distance(adjClientX, adjClientY, effect2circlePos[0], effect2circlePos[1]);
@@ -318,7 +318,9 @@ const setup = async () => {
         pressed = true;
     });
 
-    dragContainer.addEventListener('touchmove', dragging);
+    dragContainer.addEventListener('touchstart', draggingMobile);
+
+    dragContainer.addEventListener('touchmove', draggingMobile);
 
     dragContainer.addEventListener('touchend', function(){
         pressed = false;
