@@ -313,7 +313,17 @@ const setup = async () => {
     });
 
     dragContainer.addEventListener('mousemove', dragging);
-    dragContainer.addEventListener('touchmove', draggingMobile);
+
+    dragContainer.addEventListener('touchstart', function(){
+        pressed = true;
+    });
+
+    dragContainer.addEventListener('touchmove', dragging);
+
+    dragContainer.addEventListener('touchend', function(){
+        pressed = false;
+    });
+
 
     // dragContainer.addEventListener('touchstart', function(){
     //     pressed = true;
