@@ -11,6 +11,7 @@
     font-size: 1rem;
     --total-width: 90vw;
     --onpressed-color: rgba(0,103,238,0.2);
+    --magic-purple : #ab6dfb;
 }
 
 body {
@@ -59,6 +60,20 @@ h2 {
     width: 100%;
     align-items: center;
     justify-content: space-between;
+}
+
+.logo {
+    height: 90%;
+    padding-left: 2vw;
+    margin-bottom: 0.25rem;
+}
+
+.logo-big {
+    height: 200px;
+    width: 100%;
+    object-fit: contain;
+    margin-top: 1rem;
+    margin-bottom: -0.5rem;
 }
 
 .burger {
