@@ -5,6 +5,8 @@ const { createDevice } = RNBO;
 var WAContext = window.AudioContext || window.webkitAudioContext;
 var context = new WAContext();
 
+startButton = document.getElementById("start-button");
+
 var burgerMenuOpen = document.getElementById("burger-menu-open");
 var burgerMenuClose = document.getElementById("burger-menu-close");
 var popout = document.getElementById("popout");
@@ -102,10 +104,36 @@ var adjClientY = 0;
 var scaledX = 0;
 var scaledY = 0;
 
-var effect1circlePos = [1,1];
-var effect2circlePos = [1,0];
-var effect3circlePos = [0,1];
-var effect4circlePos = [0,0];
+var coord1 = [1,1];
+var coord2 = [1,0];
+var coord3 = [0,1];
+var coord4 = [0,0];
+
+var coordArray = [coord1, coord2, coord3, coord4];
+var numbers = ["0","1","2","3"];
+
+function shuffle(array) {
+    let currentIndex = array.length;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  }
+
+shuffle(numbers);
+
+var effect1circlePos = coordArray[numbers[0]];
+var effect2circlePos = coordArray[numbers[1]];
+var effect3circlePos = coordArray[numbers[2]];
+var effect4circlePos = coordArray[numbers[3]];
 var deadZoneCirclePos = [0.5, 0.5];
 
 var effect1Dist = 0;
@@ -583,23 +611,6 @@ const setup = async () => {
         }
     }
 
-
-    //toggles
-
-    // toggleButton.addEventListener('touchstart', function() {
-    //     toggleBool = !toggleBool;
-    //     if(toggleBool == true){
-    //         toggleButton.style.backgroundColor = "gray";
-    //         toggleButton.style.color = "white";
-    //         toggleParam.value = 1;
-    //     }
-    //     else {
-    //         toggleButton.style.backgroundColor = "white";
-    //         toggleButton.style.color = "gray";
-    //         toggleParam.value = 0;
-    //     }
-    // })
-
     toggleButton.addEventListener('click', function() {
         toggleBool = !toggleBool;
         if(toggleBool == true){
@@ -614,20 +625,6 @@ const setup = async () => {
             play1.style.backgroundColor = "white";
         }
     })
-
-    // pitchButton.addEventListener('touchstart', function() {
-    //     pitchBool = !pitchBool;
-    //     if(pitchBool == true){
-    //         pitchButton.style.backgroundColor = "gray";
-    //         pitchButton.style.color = "white";
-    //         pitchParam.value = 1;
-    //     }
-    //     else {
-    //         pitchButton.style.backgroundColor = "white";
-    //         pitchButton.style.color = "gray";
-    //         pitchParam.value = 0;
-    //     }
-    // })
 
     pitchButton.addEventListener('click', function() {
         pitchBool = !pitchBool;
@@ -644,20 +641,6 @@ const setup = async () => {
         }
     })
 
-    // cropButton.addEventListener('touchstart', function() {
-    //     cropBool = !cropBool;
-    //     if(cropBool == true){
-    //         cropButton.style.backgroundColor = "gray";
-    //         cropButton.style.color = "white";
-    //         cropParam.value = 1;
-    //     }
-    //     else {
-    //         cropButton.style.backgroundColor = "white";
-    //         cropButton.style.color = "gray";
-    //         cropParam.value = 0;
-    //     }
-    // })
-
     cropButton.addEventListener('click', function() {
         cropBool = !cropBool;
         if(cropBool == true){
@@ -672,20 +655,6 @@ const setup = async () => {
             playButtons.style.backgroundColor = "white";
         }
     })
-
-    // feedbackButton.addEventListener('touchstart', function() {
-    //     feedbackBool = !feedbackBool;
-    //     if(feedbackBool == true){
-    //         feedbackButton.style.backgroundColor = "gray";
-    //         feedbackButton.style.color = "white";
-    //         feedbackParam.value = 1;
-    //     }
-    //     else {
-    //         feedbackButton.style.backgroundColor = "white";
-    //         feedbackButton.style.color = "gray";
-    //         feedbackParam.value = 0;
-    //     }
-    // })
 
     feedbackButton.addEventListener('click', function() {
         feedbackBool = !feedbackBool;
@@ -757,13 +726,24 @@ const setup = async () => {
     context.resume();
 };
 
-setup();
-
 function startAudio() {
-  context.resume();
-}
+    context.resume();
+  }
+  
 
-startAudio();
+startButton.addEventListener('click', function(){
+    document.querySelector(".start-cover").style.opacity = "0";
+    setup();
+    startAudio();
+    setTimeout(() => {
+        document.querySelector(".start-cover").style.display = "none";
+      }, "200");
+      
+})
+
+// setup();
+
+// startAudio();
 
 function popoutOpen(){
         popout.style.display = "block"
