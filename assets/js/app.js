@@ -152,7 +152,6 @@ var noiseGradients = [
 ]
 
 var gradientRandom = Math.ceil(Math.random() * noiseGradients.length);
-console.log(gradientRandom);
 var gradientBackground = document.querySelector(".thumb-toggle-container");
 gradientBackground.style.backgroundImage = noiseGradients[gradientRandom];
 
