@@ -136,6 +136,26 @@ var effect3circlePos = coordArray[numbers[2]];
 var effect4circlePos = coordArray[numbers[3]];
 var deadZoneCirclePos = [0.5, 0.5];
 
+var noiseGradients = [
+    "url('assets/imgs/noise/noise1.png')",
+    "url('assets/imgs/noise/noise2.png')",
+    "url('assets/imgs/noise/noise3.png')",
+    "url('assets/imgs/noise/noise4.png')",
+    "url('assets/imgs/noise/noise5.png')",
+    "url('assets/imgs/noise/noise6.png')",
+    "url('assets/imgs/noise/noise7.png')",
+    "url('assets/imgs/noise/noise8.png')",
+    "url('assets/imgs/noise/noise9.png')",
+    "url('assets/imgs/noise/noise10.png')",
+    "url('assets/imgs/noise/noise11.png')",
+    "url('assets/imgs/noise/noise12.png')",
+]
+
+var gradientRandom = Math.ceil(Math.random() * noiseGradients.length);
+console.log(gradientRandom);
+var gradientBackground = document.querySelector(".thumb-toggle-container");
+gradientBackground.style.backgroundImage = noiseGradients[gradientRandom];
+
 var effect1Dist = 0;
 var effect2Dist = 0;
 var effect3Dist = 0;

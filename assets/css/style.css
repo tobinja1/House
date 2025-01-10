@@ -109,6 +109,7 @@ h2 {
     width: var(--total-width);
     height: 100%;
     background-image: url('../imgs/gradient.png');
+    object-fit: cover;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -152,14 +153,6 @@ h2 {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-}
-
-.play-button-row {
-
-}
-
-.param-button-row {
-
 }
 
 .disable-dbl-tap-zoom {
