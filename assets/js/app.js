@@ -169,7 +169,9 @@ var effect2dry = 0;
 var effect3dry = 0;
 var effect4dry = 0;
 
-console.log(dragContainer.getBoundingClientRect())
+document.querySelector(".start-cover-inner").style.opacity = "1";
+document.querySelector(".start-cover-inner").style.transform = "scale(1)";
+
 
 const setup = async () => {
 
