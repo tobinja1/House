@@ -94,6 +94,10 @@ h2 {
     opacity: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
     transition: all 1s ease-in-out;
 }
 
@@ -157,7 +161,7 @@ h2 {
     width: var(--total-width);
 }
 
-.record-button-row, .play-button-row, .param-button-row {
+.record-button-row, .play-button-row, .param-button-row, .secondary-samples-row {
     display: flex;
     flex-direction: row;
     width: 100%;

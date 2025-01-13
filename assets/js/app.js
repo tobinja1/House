@@ -172,6 +172,19 @@ var effect4dry = 0;
 document.querySelector(".start-cover-inner").style.opacity = "1";
 document.querySelector(".start-cover-inner").style.transform = "scale(1)";
 
+//additional samples display logic
+
+function displayControl(className) {
+    var elems = document.querySelectorAll(className);
+    var index = 0, length = elems.length;
+    for ( ; index < length; index++) {
+        elems[index].style.display = "none";
+    }
+}
+
+displayControl(".secondary-samples-row");
+
+
 
 const setup = async () => {
 
