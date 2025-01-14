@@ -107,11 +107,6 @@ var device;
 
 //effects logic
 
-var dragContainer = document.getElementById("drag-container");
-var dragContainerBoundingRect = dragContainer.getBoundingClientRect();
-var thumbDrag = document.getElementById("thumb-drag");
-var thumbWidth = 50;
-
 var adjClientX = 0;
 var adjClientY = 0;
 var scaledX = 0;
@@ -241,6 +236,11 @@ function recsSampsToggle(){
 }
 
 const setup = async () => {
+
+    var dragContainer = document.getElementById("drag-container");
+    var dragContainerBoundingRect = dragContainer.getBoundingClientRect();
+    var thumbDrag = document.getElementById("thumb-drag");
+    var thumbWidth = 50;
 
     let response = await fetch("assets/rnbo/houseVer3.json");
     const devicePatch = await response.json();
