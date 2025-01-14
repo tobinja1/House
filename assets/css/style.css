@@ -105,19 +105,18 @@ h2 {
     font-size: 1.2rem;
 }
 
-.burger {
-    height: 30px;
-    width: 30px;
-    padding-right: 2vw;
-    margin-top: 0.25rem;
+.menu-button {
+    width: 10.5rem;
+    color: black;
+    border-color: black;
 }
 
-.burgerline {
-    margin-bottom: 0.25rem;
-    border-width: 1px;
+.menu-button:active {
+    background-color: var(--onpressed-color);
 }
 
 .thumb-toggle-container {
+    margin-top: 0.5rem;
     position: relative;
     width: var(--total-width);
     height: 100%;

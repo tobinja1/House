@@ -11,6 +11,10 @@ var burgerMenuOpen = document.getElementById("burger-menu-open");
 var burgerMenuClose = document.getElementById("burger-menu-close");
 var popout = document.getElementById("popout");
 
+var recsButton = document.getElementById("recs-button");
+var samplesButton = document.getElementById("samples-button");
+var isRecsBool = true;
+
 var totalRecords = 8;
 
 var playPressedColor = "rgba(0,103,238,0.2)";
@@ -72,6 +76,15 @@ var play5 = document.getElementById("play5");
 var play6 = document.getElementById("play6");
 var play7 = document.getElementById("play7");
 var play8 = document.getElementById("play8");
+
+var sample1 = document.getElementById("sample1");
+var sample2 = document.getElementById("sample2");
+var sample3 = document.getElementById("sample3");
+var sample4 = document.getElementById("sample4");
+var sample5 = document.getElementById("sample5");
+var sample6 = document.getElementById("sample6");
+var sample7 = document.getElementById("sample7");
+var sample8 = document.getElementById("sample8");
 
 var playButtons = document.querySelectorAll(".play-button");
 
@@ -174,17 +187,51 @@ document.querySelector(".start-cover-inner").style.transform = "scale(1)";
 
 //additional samples display logic
 
-function displayControl(className) {
+function displayControl(className, value) {
     var elems = document.querySelectorAll(className);
     var index = 0, length = elems.length;
     for ( ; index < length; index++) {
-        elems[index].style.display = "none";
+        elems[index].style.display = value;
     }
 }
 
-displayControl(".secondary-samples-row");
+displayControl(".secondary-samples-row", "none");
 
+samplesButton.addEventListener('click', function(){
+    recsSampsToggle();
+})
 
+recsButton.addEventListener('click', function(){
+    recsSampsToggle();
+})
+
+// function recsSampsToggle(target, other){
+//     isRecsBool = !isRecsBool;
+//     target.style.backgroundColor = "gray";
+//     target.style.color = "white";
+//     other.style.backgroundColor = "white";
+//     other.style.color = "gray";
+// }
+
+function recsSampsToggle(){
+    isRecsBool = !isRecsBool;
+    if(isRecsBool == true){
+        recsButton.style.backgroundColor = "gray";
+        recsButton.style.color = "white";
+        samplesButton.style.backgroundColor = "white";
+        samplesButton.style.color = "gray";
+        displayControl(".secondary-samples-row", "none");
+        displayControl(".play-button-row", "flex");
+    }
+    else {
+        samplesButton.style.backgroundColor = "gray";
+        samplesButton.style.color = "white";
+        recsButton.style.backgroundColor = "white";
+        recsButton.style.color = "gray";
+        displayControl(".secondary-samples-row", "flex");
+        displayControl(".play-button-row", "none");
+    }
+}
 
 const setup = async () => {
 
