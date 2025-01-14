@@ -196,6 +196,7 @@ function displayControl(className, value) {
 }
 
 displayControl(".secondary-samples-row", "none");
+displayControl(".dead", "none");
 
 samplesButton.addEventListener('click', function(){
     recsSampsToggle();
@@ -222,6 +223,9 @@ function recsSampsToggle(){
         samplesButton.style.color = "gray";
         displayControl(".secondary-samples-row", "none");
         displayControl(".play-button-row", "flex");
+
+        displayControl(".dead", "none");
+        displayControl(".record-button-row", "flex");
     }
     else {
         samplesButton.style.backgroundColor = "gray";
@@ -230,6 +234,9 @@ function recsSampsToggle(){
         recsButton.style.color = "gray";
         displayControl(".secondary-samples-row", "flex");
         displayControl(".play-button-row", "none");
+
+        displayControl(".dead", "flex");
+        displayControl(".record-button-row", "none");
     }
 }
 

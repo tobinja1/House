@@ -160,7 +160,7 @@ h2 {
     width: var(--total-width);
 }
 
-.record-button-row, .play-button-row, .param-button-row, .secondary-samples-row {
+.record-button-row, .play-button-row, .param-button-row, .secondary-samples-row, .dead {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -182,7 +182,7 @@ h2 {
     color: gray;
 }
 
-.record-button {
+.record-button, .null {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,6 +190,12 @@ h2 {
     background-color: white;
     border-color: red;
     color: black;
+}
+
+.null {
+    background-color: white;
+    border-color: lightgray;
+    color: lightgray;
 }
 
 .play-button {
