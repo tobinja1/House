@@ -155,6 +155,7 @@ function shuffle(array) {
   }
 
 shuffle(numbers);
+shuffle(sampleBank);
 
 var effect1circlePos = coordArray[numbers[0]];
 var effect2circlePos = coordArray[numbers[1]];
@@ -280,10 +281,45 @@ const setup = async () => {
 
     //loading audio files for the sample player
 
-    response = await fetch("assets/audio/nw_ah_80_synth_loop_nasal_chaos_Dbm.wav");
+    response = await fetch(sampleBank[0]);
 	const arrayBuf1 = await response.arrayBuffer();
 	const audioBuf1 = await context.decodeAudioData(arrayBuf1);
 	await samplesPlayer.setDataBuffer("theBuff1", audioBuf1);
+
+    response = await fetch(sampleBank[1]);
+	const arrayBuf2 = await response.arrayBuffer();
+	const audioBuf2 = await context.decodeAudioData(arrayBuf2);
+	await samplesPlayer.setDataBuffer("theBuff2", audioBuf2);
+
+    response = await fetch(sampleBank[2]);
+	const arrayBuf3 = await response.arrayBuffer();
+	const audioBuf3 = await context.decodeAudioData(arrayBuf3);
+	await samplesPlayer.setDataBuffer("theBuff3", audioBuf3);
+
+    response = await fetch(sampleBank[3]);
+	const arrayBuf4 = await response.arrayBuffer();
+	const audioBuf4 = await context.decodeAudioData(arrayBuf4);
+	await samplesPlayer.setDataBuffer("theBuff4", audioBuf4);
+
+    response = await fetch(sampleBank[4]);
+	const arrayBuf5 = await response.arrayBuffer();
+	const audioBuf5 = await context.decodeAudioData(arrayBuf5);
+	await samplesPlayer.setDataBuffer("theBuff5", audioBuf5);
+
+    response = await fetch(sampleBank[5]);
+	const arrayBuf6 = await response.arrayBuffer();
+	const audioBuf6 = await context.decodeAudioData(arrayBuf6);
+	await samplesPlayer.setDataBuffer("theBuff6", audioBuf6);
+
+    response = await fetch(sampleBank[6]);
+	const arrayBuf7 = await response.arrayBuffer();
+	const audioBuf7 = await context.decodeAudioData(arrayBuf7);
+	await samplesPlayer.setDataBuffer("theBuff7", audioBuf7);
+
+    response = await fetch(sampleBank[7]);
+	const arrayBuf8 = await response.arrayBuffer();
+	const audioBuf8 = await context.decodeAudioData(arrayBuf8);
+	await samplesPlayer.setDataBuffer("theBuff8", audioBuf8);
 
     effect1 = await createDevice({ context, patcher : effect1Patch });
     effect2 = await createDevice({ context, patcher : effect2Patch });
