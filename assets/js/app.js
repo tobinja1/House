@@ -10,6 +10,7 @@ startButton = document.getElementById("start-button");
 var burgerMenuOpen = document.getElementById("burger-menu-open");
 var burgerMenuClose = document.getElementById("burger-menu-close");
 var popout = document.getElementById("popout");
+var volSlider = document.getElementById("vol-slider");
 
 var recsButton = document.getElementById("recs-button");
 var samplesButton = document.getElementById("samples-button");
@@ -370,6 +371,8 @@ const setup = async () => {
     ps6 = samplesPlayer.parametersById.get("p6");
     ps7 = samplesPlayer.parametersById.get("p7");
     ps8 = samplesPlayer.parametersById.get("p8");
+
+    vol = samplesPlayer.parametersById.get("volume");
 
     toggleParam = device.parametersById.get("toggleParam");
     pitchParam = device.parametersById.get("pitchParam");
@@ -931,6 +934,9 @@ const setup = async () => {
         }
     })
 
+    volSlider.oninput = function() {
+        vol.value = this.value/100;
+      } 
     
 
     context.resume();
