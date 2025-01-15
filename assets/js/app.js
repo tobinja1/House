@@ -31,7 +31,25 @@ var record8Bool = false;
 var dudRecordBool = false;
 
 var recordBools = [false, false, false, false, false, false, false, false];
-var playBools = [false, false, false, false, false, false, false, false];
+var playBools = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+var sampleBank = [
+    "assets/audio/samp1.wav",
+    "assets/audio/samp2.wav",
+    "assets/audio/samp3.wav",
+    "assets/audio/samp4.wav",
+    "assets/audio/samp5.wav",
+    "assets/audio/samp6.wav",
+    "assets/audio/samp7.wav",
+    "assets/audio/samp8.wav",
+    "assets/audio/samp9.wav",
+    "assets/audio/samp10.wav",
+    "assets/audio/samp11.wav",
+    "assets/audio/samp12.wav",
+    "assets/audio/samp13.wav",
+    "assets/audio/samp14.wav",
+    "assets/audio/samp15.wav",
+    "assets/audio/samp16.wav"
+];
 
 var playDudBool = false;
 
@@ -242,6 +260,8 @@ const setup = async () => {
     var thumbDrag = document.getElementById("thumb-drag");
     var thumbWidth = 50;
 
+    //loading devices
+
     let response = await fetch("assets/rnbo/houseVer3.json");
     const devicePatch = await response.json();
     response = await fetch("assets/rnbo/houseDelay.json");
@@ -252,8 +272,18 @@ const setup = async () => {
     const effect3Patch = await response.json();
     response = await fetch("assets/rnbo/houseCrush.json");
     const effect4Patch = await response.json();
+    response = await fetch("assets/rnbo/houseSecondarySamples.json");
+    const samplesPatch = await response.json();
 
     device = await createDevice({ context, patcher : devicePatch });
+    samplesPlayer = await createDevice({ context, patcher : samplesPatch });
+
+    //loading audio files for the sample player
+
+    response = await fetch("assets/audio/nw_ah_80_synth_loop_nasal_chaos_Dbm.wav");
+	const arrayBuf1 = await response.arrayBuffer();
+	const audioBuf1 = await context.decodeAudioData(arrayBuf1);
+	await samplesPlayer.setDataBuffer("theBuff1", audioBuf1);
 
     effect1 = await createDevice({ context, patcher : effect1Patch });
     effect2 = await createDevice({ context, patcher : effect2Patch });
@@ -281,10 +311,24 @@ const setup = async () => {
     p7 = device.parametersById.get("p7");
     p8 = device.parametersById.get("p8");
 
+    ps1 = samplesPlayer.parametersById.get("p1");
+    ps2 = samplesPlayer.parametersById.get("p2");
+    ps3 = samplesPlayer.parametersById.get("p3");
+    ps4 = samplesPlayer.parametersById.get("p4");
+    ps5 = samplesPlayer.parametersById.get("p5");
+    ps6 = samplesPlayer.parametersById.get("p6");
+    ps7 = samplesPlayer.parametersById.get("p7");
+    ps8 = samplesPlayer.parametersById.get("p8");
+
     toggleParam = device.parametersById.get("toggleParam");
     pitchParam = device.parametersById.get("pitchParam");
     cropParam = device.parametersById.get("cropParam");
     feedbackParam = device.parametersById.get("feedbackParam");
+
+    toggleSampleParam = samplesPlayer.parametersById.get("toggleParam");
+    pitchSampleParam = samplesPlayer.parametersById.get("pitchParam");
+    cropSampleParam = samplesPlayer.parametersById.get("cropParam");
+    feedbackSampleParam = samplesPlayer.parametersById.get("feedbackParam");
 
     //getting effects params
     effect1dry = effect1.parametersById.get("dryWet");
@@ -293,8 +337,12 @@ const setup = async () => {
     effect4dry = effect4.parametersById.get("dryWet");
 
     source.connect(device.node);
+    source.connect(samplesPlayer.node);
 
     device.node.connect(effect1.node);
+    samplesPlayer.node.connect(effect1.node);
+
+
     effect1.node.connect(effect2.node);
     effect2.node.connect(effect3.node);
     effect3.node.connect(effect4.node);
@@ -652,6 +700,67 @@ const setup = async () => {
         playOffToggling(p8, play8);
     })
 
+    sample1.addEventListener('mousedown', function(){
+        playOnToggling(8, ps1, sample1);
+    })
+    sample1.addEventListener('mouseup', function(){
+        playOffToggling(ps1, sample1);
+    })
+
+
+    sample2.addEventListener('mousedown', function(){
+        playOnToggling(9, ps2, sample2);
+    })
+    sample2.addEventListener('mouseup', function(){
+        playOffToggling(ps2, sample2);
+    })
+
+
+    sample3.addEventListener('mousedown', function(){
+        playOnToggling(10, ps3, sample3);
+    })
+    sample3.addEventListener('mouseup', function(){
+        playOffToggling(ps3, sample3);
+    })
+
+
+    sample4.addEventListener('mousedown', function(){
+        playOnToggling(11, ps4, sample4);
+    })
+    sample4.addEventListener('mouseup', function(){
+        playOffToggling(ps4, sample4);
+    })
+
+
+    sample5.addEventListener('mousedown', function(){
+        playOnToggling(12, ps5, sample5);
+    })
+    sample5.addEventListener('mouseup', function(){
+        playOffToggling(ps5, sample5);
+    })
+
+
+    sample6.addEventListener('mousedown', function(){
+        playOnToggling(13, ps6, sample6);
+    })
+    sample6.addEventListener('mouseup', function(){
+        playOffToggling(ps6, sample6);
+    })
+
+    sample7.addEventListener('mousedown', function(){
+        playOnToggling(14, ps7, sample7);
+    })
+    sample7.addEventListener('mouseup', function(){
+        playOffToggling(ps7, sample7);
+    })
+
+    sample8.addEventListener('mousedown', function(){
+        playOnToggling(15, ps8, sample8);
+    })
+    sample8.addEventListener('mouseup', function(){
+        playOffToggling(ps8, sample8);
+    })
+
 
     function playOnToggling(targetBool, targetValue, targetElement){
         if(toggleBool == true){
@@ -705,11 +814,13 @@ const setup = async () => {
             toggleButton.style.backgroundColor = "gray";
             toggleButton.style.color = "white";
             toggleParam.value = 1;
+            toggleSampleParam.value = 1;
         }
         else {
             toggleButton.style.backgroundColor = "white";
             toggleButton.style.color = "gray";
             toggleParam.value = 0;
+            toggleSampleParam.value = 0;
             play1.style.backgroundColor = "white";
         }
     })
@@ -720,11 +831,13 @@ const setup = async () => {
             pitchButton.style.backgroundColor = "gray";
             pitchButton.style.color = "white";
             pitchParam.value = 1;
+            pitchSampleParam.value = 1;
         }
         else {
             pitchButton.style.backgroundColor = "white";
             pitchButton.style.color = "gray";
             pitchParam.value = 0;
+            pitchSampleParam.value = 0;
             playButtons.style.backgroundColor = "white";
         }
     })
@@ -735,11 +848,13 @@ const setup = async () => {
             cropButton.style.backgroundColor = "gray";
             cropButton.style.color = "white";
             cropParam.value = 1;
+            cropSampleParam.value = 1;
         }
         else {
             cropButton.style.backgroundColor = "white";
             cropButton.style.color = "gray";
             cropParam.value = 0;
+            cropSampleParam.value = 0;
             playButtons.style.backgroundColor = "white";
         }
     })
@@ -750,11 +865,13 @@ const setup = async () => {
             feedbackButton.style.backgroundColor = "gray";
             feedbackButton.style.color = "white";
             feedbackParam.value = 1;
+            feedbackSampleParam.value = 1;
         }
         else {
             feedbackButton.style.backgroundColor = "white";
             feedbackButton.style.color = "gray";
             feedbackParam.value = 0;
+            feedbackSampleParam.value = 0;
             playButtons.style.backgroundColor = "white";
         }
     })
