@@ -73,6 +73,16 @@
                     <img src="./assets/imgs/houseeffectsgraphic.png" alt="An image explaining how the dragging-based effects in house work." class="tut-image centered">
                     <p class="popout-body">depending on where you leave your gray dot, your audio could have a smattering of different <u>effects</u> applied to it. the closer to the corners, the more pronounced the specific <u>effects</u> will be; conversely, if you leave the gray dot in the center, no effects will be applied, and you can hear your dry, unaffected audio.</p>
                 </div>
+                <div>
+                    <h2 class="popout-section-hed">recs vs. samples mode</h2>
+                    <p class="popout-body">the Magic House has two modes: <u>recs</u> mode and <u>samples</u> mode, which allow you to play back either your custom-recorded samples, or an array of 8 provided samples, respectively. you can toggle between them using these buttons towards the bottom of the interface:</p>
+                    <div style="display: flex; flex-direction: row; justify-content: center; padding: auto;">
+                        <button class="param-button round-border button-width disable-dbl-tap-zoom" style="background-color: gray; color: white; margin-right: 4rem;" id="recs-button-dud">recs</button>
+                        <button class="param-button round-border button-width disable-dbl-tap-zoom" id="samples-button-dud">samples</button>
+                    </div>
+                    <p class="popout-body">in <u>recs</u> mode, you can record into individual <u>play</u> buffers. in <u>samples</u> mode, you can't record into the sample buffers, and you'll notice the <u>record</u> buttons are grayed out. toggle buttons apply their respective effects to <i>both</i> <u>recs</u> and <u>samples</u> mode. likewise, if you enable looping, switch to the <u>samples</u> page, and then switch back, the pressed sample will continue to loop.</p>
+                    <p class="popout-body">something worth noting: <u>samples</u> are passed through the effects section like user-recorded samples are.</p>
+                </div>
             </div>
         </div>
     </div>

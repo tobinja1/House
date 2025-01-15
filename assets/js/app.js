@@ -254,6 +254,29 @@ function recsSampsToggle(){
     }
 }
 
+var dudRecs = document.getElementById("recs-button-dud");
+var dudSamples = document.getElementById("samples-button-dud");
+var dudBool = true;
+
+function recSampsDud() {
+    dudBool = !dudBool;
+    if(dudBool == true){
+        dudRecs.style.backgroundColor = "gray";
+        dudRecs.style.color = "white";
+        dudSamples.style.backgroundColor = "white";
+        dudSamples.style.color = "gray";
+    }
+    else {
+        dudSamples.style.backgroundColor = "gray";
+        dudSamples.style.color = "white";
+        dudRecs.style.backgroundColor = "white";
+        dudRecs.style.color = "gray";
+    }
+}
+
+dudRecs.addEventListener('click', recSampsDud);
+dudSamples. addEventListener('click', recSampsDud);
+
 const setup = async () => {
 
     var dragContainer = document.getElementById("drag-container");
