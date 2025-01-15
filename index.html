@@ -42,21 +42,31 @@
                 <p style="width: 100%; text-align: center; margin-top: 0.25rem;">here's how you play:</p>
                 <p id="mobile-warning" style="width: 100%; text-align: center; font-weight: bold;">(NOTE: the magic house is made for mobile, so try it there instead!)</p>
             </div>
+            <div>
+                <h2 class="popout-section-hed" style="width: 100%; text-align: center;">quick nav:</h2>
+                <div class="quick-nav">
+                    <a href="#recording-section">recording</a>
+                    <a href="#playing-section">playing</a>
+                    <a href="#parameters-section">parameters</a>
+                    <a href="#effects-section">effects</a>
+                    <a href="#recs-and-samples-section">recs vs. samples</a>
+                </div>
+            </div>
             <div class="house-popout-main">
                 <div>
-                    <h2 class="popout-section-hed">recording:</h2>
+                    <h2 class="popout-section-hed" id="recording-section">recording:</h2>
                     <p class="popout-body">while playing The Magic House, you’ll be recording, playing back, and applying effects to audio. you have <u>8</u> channels of audio you can record into by pressing the <u>rec</u> buttons:</p>
                     <button class="record-button round-border button-width disable-dbl-tap-zoom centered" id="recordnull">rec 1</button>
                     <p class="popout-body">press it, and you’ll notice it turns red. <u>this means you’re recording any and all audio from your input device to the channel specified by the record button</u>. press it again to stop recording.</p>
                 </div>
                 <div>
-                    <h2 class="popout-section-hed">playing:</h2>
+                    <h2 class="popout-section-hed" id="playing-section">playing:</h2>
                     <p class="popout-body">below each rec button is a <u>play</u> button. after you’ve recorded audio, press the <u>play</u> button of the same channel to play it back.</p>
                     <button class="play-button round-border button-width disable-dbl-tap-zoom centered" id="playnull">play 1</button>
                     <p class="popout-body">the <u>play</u> button plays audio back a single time per-press, like a soundboard. if you want it to loop, hit the <u>loop</u> button (more on that below).</p>
                 </div>
                 <div>
-                    <h2 class="popout-section-hed">toggling parameters:</h2>
+                    <h2 class="popout-section-hed" id="parameters-section">toggling parameters:</h2>
                     <p class="popout-body">there are <u>4 toggleable parameters</u> in house, each with a different purpose:</p>
                     <button class="param-button round-border button-width disable-dbl-tap-zoom centered" id="togglenull">loop</button>
                     <p class="popout-body">the <u>loop</u> parameter controls toggles looping on or off. when toggled on, tapping a <u>play</u> button will loop its respective sample until the <u>play</u> button is tapped again.</p>
@@ -68,13 +78,13 @@
                     <p class="popout-body">the <u>feedback</u> parameter passes the raw audio input of your input device through all effects and out the other end. be warned: <u>feedback</u> risks real-world feedback!</p>
                 </div>
                 <div>
-                    <h2 class="popout-section-hed">effects:</h2>
+                    <h2 class="popout-section-hed" id="effects-section">effects:</h2>
                     <p class="popout-body">to apply <u>effects</u>, drag your thumb (or mouse) across the multicolored pad above the parameter buttons. house uses 4 <u>effects</u>, some of which bleed into each other and have unique auditory interactions. the drag-based logic looks like this:</p>
                     <img src="./assets/imgs/houseeffectsgraphic.png" alt="An image explaining how the dragging-based effects in house work." class="tut-image centered">
                     <p class="popout-body">depending on where you leave your gray dot, your audio could have a smattering of different <u>effects</u> applied to it. the closer to the corners, the more pronounced the specific <u>effects</u> will be; conversely, if you leave the gray dot in the center, no effects will be applied, and you can hear your dry, unaffected audio.</p>
                 </div>
                 <div>
-                    <h2 class="popout-section-hed">recs vs. samples mode</h2>
+                    <h2 class="popout-section-hed" id="recs-and-samples-section">recs vs. samples mode</h2>
                     <p class="popout-body">the Magic House has two modes: <u>recs</u> mode and <u>samples</u> mode, which allow you to play back either your custom-recorded samples, or an array of 8 provided samples, respectively. you can toggle between them using these buttons towards the bottom of the interface:</p>
                     <div style="display: flex; flex-direction: row; justify-content: center; padding: auto;">
                         <button class="param-button round-border button-width disable-dbl-tap-zoom" style="background-color: gray; color: white; margin-right: 4rem;" id="recs-button-dud">recs</button>
