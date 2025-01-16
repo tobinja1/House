@@ -56,7 +56,6 @@ a {
     font-size: 1rem;
     margin-top: 0px;
     margin-bottom: 0.25rem;
-
 }
 
 .big-margin {
@@ -306,6 +305,11 @@ a {
     .button-width {
         width: 22%;
     }
+
+    .menu-button {
+        width: 48%;
+    }
+
     #mobile-warning {
         display: block;
     }
