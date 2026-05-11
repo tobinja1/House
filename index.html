@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.cycling74.com/rnbo/latest/rnbo.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="An interactive web audio tool for use with Sky Hill's card game, The Magic House.">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -16,137 +17,7 @@
     <title>The Magic House</title>
 </head>
 <body>
-    <div class="start-cover">
-        <div class="start-cover-inner">
-            <img class="logo-big" src="/assets/imgs/the magic house - logo (square).png" alt="Logo for The Magic House">
-            <button id="start-button" style="margin-top: 2rem;">enter The Magic House</button>
-        </div>
-    </div>
-    <div id="popout">
-        <div class="menu-and-icon-container">
-            <div id="burger-menu-close">
-                <div class="burgerline round-border" style="position: absolute; margin-top: 0.5em; width: 30px; transform: rotate(45deg);"></div>
-                <div class="burgerline round-border" style="position: absolute; margin-top: 0.5rem; width: 30px; transform: rotate(-45deg);"></div>
-            </div>
-        </div>
-        <div class="popout-content-container" style="padding-bottom: 1rem;">
-            <div class="h1-container" style="display: flex; flex-direction: column; align-content: center; align-items: center;">
-                <h1>The Magic House</h1>
-                <p class="subtext" style="margin-left: 0.25rem;">ver. 2.1</p>
-                <p class="subtext">by celia hill</p>
-                <p class="subtext">built by <a href="https://dayflowerstudio.com/">dayflower studio</a></p>
-            </div>
-            <div class="house-popout-top">
-                <img class="logo-big" src="/assets/imgs/the magic house - logo (square).png" alt="Logo for The Magic House">
-                <a href="https://gumroad.com/discover?a=335080211&gad_source=1&gad_campaignid=21838325751&gclid=CjwKCAjwyMnNBhBNEiwA-Kcgu5zAnmnS5uPfabl3-RKQw836mveYRmd1-jCzfq05hIh3arEJX_doDhoC5JQQAvD_BwE" target="_blank" rel="noopener noreferrer">
-                    <h2 style="width: 100%; text-align: center; margin-bottom: 0px;">buy the cards here!</h2>
-                </a>
-                <p id="mobile-warning" style="width: 100%; text-align: center; font-weight: bold;">(NOTE: the magic house is made for mobile, so try it there instead!)</p>
-            </div>
-            <div class="vol-slider-container">
-                <div class="slider-container" style="justify-content: center; align-items: center; display: flex; flex-direction: column;">
-                    <label for="vol-slider" style="font-weight: bold;">volume of <u>samples</u> section:</label>
-                    <input type="range" min="1" max="100" value="50" class="slider" id="vol-slider" style="width: 80%;">
-                  </div>
-            </div>
-            <div class="house-popout-main">
-                <div>
-                    <h2 class="popout-section-hed" id="recording-section">how to play:</h2>
-                    <p class="popout-body">this is a <u>record</u> button. press it to record audio.</p>
-                    <button class="record-button round-border button-width disable-dbl-tap-zoom centered" id="recordnull">rec 1</button>
-                    <p class="popout-body">press it, and it turns red. <u>this means you’re recording</u>. press it again to stop recording.</p>
-                    <p class="popout-body">this is a <u>play</u> button. press it to <u>play</u> the audio you just recorded.</p>
-                    <button class="play-button round-border button-width disable-dbl-tap-zoom centered" id="playnull">play 1</button>
-                    <p class="popout-body">you can <u>loop</u> the audio you just recorded.</p>
-                    <button class="param-button round-border button-width disable-dbl-tap-zoom centered" id="togglenull">loop</button>
-                    <p class="popout-body">or randomize its <u>pitch</u>.</p>
-                    <button class="param-button round-border button-width disable-dbl-tap-zoom centered" id="pitchnull">pitch</button>
-                    <p class="popout-body">and randomly <u>crop</u> the recording, too.</p>
-                    <button class="param-button round-border button-width disable-dbl-tap-zoom centered" id="cropnull">crop</button>
-                    <p class="popout-body">press the <u>feedback</u> button instantly output all sounds coming into the mic.</p>
-                    <button class="param-button round-border button-width disable-dbl-tap-zoom centered" id="feedbacknull">feedback</button>
-                    <p class="popout-body"><b>the Magic House</b> uses four different <u>effects</u>. drag your thumb (or mouse) across the multicolored pad below. individual <u>effects</u> are more pronounced in the corners of the box, while they blend together towards the middle.</p>
-                    <img src="./assets/imgs/houseeffectsgraphic.png" alt="An image explaining how the dragging-based effects in house work." class="tut-image centered">
-                    <p class="popout-body"><b>the Magic House</b> also has two modes: <u>recs</u> mode and <u>samples</u> mode. in <u>samples</u> mode, you use pre-recorded samples instead of your own recordings.</p>
-                    <div style="display: flex; flex-direction: row; justify-content: center; padding: auto;">
-                        <button class="param-button round-border button-width disable-dbl-tap-zoom" style="background-color: gray; color: white; margin-right: 4rem;" id="recs-button-dud">recs</button>
-                        <button class="param-button round-border button-width disable-dbl-tap-zoom" id="samples-button-dud">samples</button>
-                    </div>
-                    <button class="play-button round-border button-width disable-dbl-tap-zoom centered" id="playnull">play 1</button>
-            <div class="h1-container" style="display: flex; flex-direction: column; align-content: center; align-items: center;">
-                <p class="subtext">need the cards? buy them <a href="https://gumroad.com/discover?a=335080211&gad_source=1&gad_campaignid=21838325751&gclid=CjwKCAjwyMnNBhBNEiwA-Kcgu5zAnmnS5uPfabl3-RKQw836mveYRmd1-jCzfq05hIh3arEJX_doDhoC5JQQAvD_BwE" target="_blank" rel="noopener noreferrer">here!</a></p>
-            </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="inner-container">
-        <div id="drag-container" class="thumb-toggle-container round-border big-margin" style="overflow: hidden; touch-action: none;">
-            <div id="thumb-drag" class="thumb-drag"></div>
-        </div>
-        <div class="buttons-container">
-            <div class="param-button-row big-margin">
-                <button class="param-button round-border button-width disable-dbl-tap-zoom" id="toggle">loop</button>
-                <button class="param-button round-border button-width disable-dbl-tap-zoom" id="pitch">pitch</button>
-                <button class="param-button round-border button-width disable-dbl-tap-zoom" id="crop">crop</button>
-                <button class="param-button round-border button-width disable-dbl-tap-zoom" id="feedback">feedback</button>
-            </div>
-            <div class="record-button-row small-margin">
-                <button class="record-button round-border button-width disable-dbl-tap-zoom" id="record1">rec 1</button>
-                <button class="record-button round-border button-width disable-dbl-tap-zoom" id="record2">rec 2</button>
-                <button class="record-button round-border button-width disable-dbl-tap-zoom" id="record3">rec 3</button>
-                <button class="record-button round-border button-width disable-dbl-tap-zoom" id="record4">rec 4</button>
-            </div>
-            <div class="dead small-margin">
-                <button class="null record-button round-border button-width disable-dbl-tap-zoom" id="null1">rec 1</button>
-                <button class="null record-button round-border button-width disable-dbl-tap-zoom" id="null2">rec 2</button>
-                <button class="null record-button round-border button-width disable-dbl-tap-zoom" id="null3">rec 3</button>
-                <button class="null record-button round-border button-width disable-dbl-tap-zoom" id="null4">rec 4</button>
-            </div>
-            <div class="play-button-row big-margin">
-                <button class="play-button round-border button-width disable-dbl-tap-zoom" id="play1">play 1</button>
-                <button class="play-button round-border button-width disable-dbl-tap-zoom" id="play2">play 2</button>
-                <button class="play-button round-border button-width disable-dbl-tap-zoom" id="play3">play 3</button>
-                <button class="play-button round-border button-width disable-dbl-tap-zoom" id="play4">play 4</button>
-            </div>
-            <div class="secondary-samples-row big-margin">
-                <button class="play-button sample-button round-border button-width disable-dbl-tap-zoom" id="sample1">sample 1</button>
-                <button class="play-button sample-button round-border button-width disable-dbl-tap-zoom" id="sample2">sample 2</button>
-                <button class="play-button sample-button round-border button-width disable-dbl-tap-zoom" id="sample3">sample 3</button>
-                <button class="play-button sample-button round-border button-width disable-dbl-tap-zoom" id="sample4">sample 4</button>
-            </div>
-            <div class="record-button-row small-margin">
-                <button class="record-button round-border button-width disable-dbl-tap-zoom" id="record5">rec 5</button>
-                <button class="record-button round-border button-width disable-dbl-tap-zoom" id="record6">rec 6</button>
-                <button class="record-button round-border button-width disable-dbl-tap-zoom" id="record7">rec 7</button>
-                <button class="record-button round-border button-width disable-dbl-tap-zoom" id="record8">rec 8</button>
-            </div>
-            <div class="dead small-margin">
-                <button class="null record-button round-border button-width disable-dbl-tap-zoom" id="null5">rec 1</button>
-                <button class="null record-button round-border button-width disable-dbl-tap-zoom" id="null6">rec 2</button>
-                <button class="null record-button round-border button-width disable-dbl-tap-zoom" id="null7">rec 3</button>
-                <button class="null record-button round-border button-width disable-dbl-tap-zoom" id="null8">rec 4</button>
-            </div>
-            <div class="play-button-row big-margin">
-                <button class="play-button round-border button-width disable-dbl-tap-zoom" id="play5">play 5</button>
-                <button class="play-button round-border button-width disable-dbl-tap-zoom" id="play6">play 6</button>
-                <button class="play-button round-border button-width disable-dbl-tap-zoom" id="play7">play 7</button>
-                <button class="play-button round-border button-width disable-dbl-tap-zoom" id="play8">play 8</button>
-            </div>
-            <div class="secondary-samples-row big-margin">
-                <button class="play-button sample-button round-border button-width disable-dbl-tap-zoom" id="sample5">sample 5</button>
-                <button class="play-button sample-button round-border button-width disable-dbl-tap-zoom" id="sample6">sample 6</button>
-                <button class="play-button sample-button round-border button-width disable-dbl-tap-zoom" id="sample7">sample 7</button>
-                <button class="play-button sample-button round-border button-width disable-dbl-tap-zoom" id="sample8">sample 8</button>
-            </div>
-            <div class="menu-and-icon-container">
-                <button class="param-button round-border button-width disable-dbl-tap-zoom" style="background-color: gray; color: white;" id="recs-button">recs</button>
-                <button class="param-button round-border disable-dbl-tap-zoom menu-button" id="burger-menu-open">menu</button>
-                <button class="param-button round-border button-width disable-dbl-tap-zoom" id="samples-button">samples</button>
-            </div>
-        </div>
-    </div>
+    <div id="app"></div>
+    <script src="./assets/js/app.js"></script>
 </body>
-<script src="./assets/js/app.js"></script>
 </html>
