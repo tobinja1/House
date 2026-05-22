@@ -3,6 +3,10 @@
     src: url("/assets/fonts/RitaSmith.otf");
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     font-family: 'RitaSmith', sans-serif;
     /* font-family: 'Abel', sans-serif; */
@@ -28,12 +32,30 @@ h2 {
     font-size: 1.8rem;
 }
 
+a {
+    text-align: center;
+    margin-top: 0.5;
+    margin-bottom: 0.5rem;
+}
+
+.vol-slider-container {
+    margin-top: 1rem;
+    margin-bottom: -0.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.quick-nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .subtext {
     color: #676767;
     font-size: 1rem;
     margin-top: 0px;
     margin-bottom: 0.25rem;
-
 }
 
 .big-margin {
@@ -105,19 +127,18 @@ h2 {
     font-size: 1.2rem;
 }
 
-.burger {
-    height: 30px;
-    width: 30px;
-    padding-right: 2vw;
-    margin-top: 0.25rem;
+.menu-button {
+    width: 10.5rem;
+    color: black;
+    border-color: black;
 }
 
-.burgerline {
-    margin-bottom: 0.25rem;
-    border-width: 1px;
+.menu-button:active {
+    background-color: var(--onpressed-color);
 }
 
 .thumb-toggle-container {
+    margin-top: 0.5rem;
     position: relative;
     width: var(--total-width);
     height: 100%;
@@ -152,7 +173,7 @@ h2 {
     align-items: center;
     justify-content: top;
     width: 100%;
-    height: 80vh;
+    height: 85vh;
 }
 
 .buttons-container {
@@ -161,7 +182,7 @@ h2 {
     width: var(--total-width);
 }
 
-.record-button-row, .play-button-row, .param-button-row {
+.record-button-row, .play-button-row, .param-button-row, .secondary-samples-row, .dead {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -183,7 +204,7 @@ h2 {
     color: gray;
 }
 
-.record-button {
+.record-button, .null {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -191,6 +212,12 @@ h2 {
     background-color: white;
     border-color: red;
     color: black;
+}
+
+.null {
+    background-color: white;
+    border-color: lightgray;
+    color: lightgray;
 }
 
 .play-button {
@@ -278,6 +305,11 @@ h2 {
     .button-width {
         width: 22%;
     }
+
+    .menu-button {
+        width: 48%;
+    }
+
     #mobile-warning {
         display: block;
     }
