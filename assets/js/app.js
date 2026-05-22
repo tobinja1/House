@@ -395,6 +395,51 @@ const setup = async () => {
     effect3.node.connect(effect4.node);
     effect4.node.connect(context.destination);
 
+    // Global Recording Setup
+    const mediaStreamDest = context.createMediaStreamDestination();
+    effect4.node.connect(mediaStreamDest);
+    
+    const globalMediaRecorder = new MediaRecorder(mediaStreamDest.stream);
+    let recordedChunks = [];
+    let isRecordingGlobal = false;
+    
+    const globalRecordBtn = document.getElementById("global-record-btn");
+    const globalSaveBtn = document.getElementById("global-save-btn");
+    
+    globalRecordBtn.addEventListener('click', function(){
+        isRecordingGlobal = !isRecordingGlobal;
+        
+        if(isRecordingGlobal) {
+            recordedChunks = [];
+            globalMediaRecorder.ondataavailable = function(event) {
+                if(event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+            globalMediaRecorder.start();
+            globalRecordBtn.style.backgroundColor = "red";
+            globalRecordBtn.style.color = "white";
+            globalRecordBtn.textContent = "stop";
+        } else {
+            globalMediaRecorder.stop();
+            globalRecordBtn.style.backgroundColor = "white";
+            globalRecordBtn.style.color = "black";
+            globalRecordBtn.textContent = "record";
+            globalSaveBtn.style.display = "block";
+        }
+    });
+    
+    globalSaveBtn.addEventListener('click', function(){
+        const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'magic-house-recording.webm';
+        link.click();
+        URL.revokeObjectURL(url);
+        globalSaveBtn.style.display = "none";
+    });
+
     function clamp(num, min, max) {
         return Math.max(min, Math.min(num, max));
       }
