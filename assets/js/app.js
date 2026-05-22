@@ -399,7 +399,9 @@ const setup = async () => {
     const mediaStreamDest = context.createMediaStreamDestination();
     effect4.node.connect(mediaStreamDest);
     
-    const globalMediaRecorder = new MediaRecorder(mediaStreamDest.stream);
+    const globalMediaRecorder = new MediaRecorder(mediaStreamDest.stream, {
+        mimeType: 'audio/wav'
+    });
     let recordedChunks = [];
     let isRecordingGlobal = false;
     
@@ -430,11 +432,11 @@ const setup = async () => {
     });
     
     globalSaveBtn.addEventListener('click', function(){
-        const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+        const blob = new Blob(recordedChunks, { type: 'audio/wav' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'magic-house-recording.webm';
+        link.download = 'magic-house-recording.wav';
         link.click();
         URL.revokeObjectURL(url);
         globalSaveBtn.style.display = "none";
