@@ -107,7 +107,8 @@ var sample8 = document.getElementById("sample8");
 
 var playButtons = document.querySelectorAll(".play-button");
 
-var playDud = document.getElementById("playnull")
+var playNullTop = document.getElementById("playnull-top");
+var playNullBottom = document.getElementById("playnull-bottom");
 
 var toggleButton = document.getElementById("toggle");
 var pitchButton = document.getElementById("pitch");
@@ -183,6 +184,13 @@ var gradientRandom = Math.ceil(Math.random() * noiseGradients.length);
 var gradientBackground = document.querySelector(".thumb-toggle-container");
 gradientBackground.style.backgroundImage = noiseGradients[gradientRandom];
 
+// Apply the same gradient to the tutorial XY pad
+var tutorialGradientRandom = Math.ceil(Math.random() * noiseGradients.length);
+var tutorialGradientBackground = document.getElementById("tutorial-xy-pad");
+if(tutorialGradientBackground) {
+    tutorialGradientBackground.style.backgroundImage = noiseGradients[tutorialGradientRandom];
+}
+
 var effect1Dist = 0;
 var effect2Dist = 0;
 var effect3Dist = 0;
@@ -233,6 +241,10 @@ function recsSampsToggle(){
 
         displayControl(".dead", "none");
         displayControl(".record-button-row", "flex");
+        
+        // Update tutorial play button text
+        if(playNullTop) playNullTop.textContent = "play 1";
+        if(playNullBottom) playNullBottom.textContent = "play 1";
     }
     else {
         samplesButton.style.backgroundColor = "gray";
@@ -244,31 +256,12 @@ function recsSampsToggle(){
 
         displayControl(".dead", "flex");
         displayControl(".record-button-row", "none");
+        
+        // Update tutorial play button text
+        if(playNullTop) playNullTop.textContent = "sample 1";
+        if(playNullBottom) playNullBottom.textContent = "sample 1";
     }
 }
-
-var dudRecs = document.getElementById("recs-button-dud");
-var dudSamples = document.getElementById("samples-button-dud");
-var dudBool = true;
-
-function recSampsDud() {
-    dudBool = !dudBool;
-    if(dudBool == true){
-        dudRecs.style.backgroundColor = "gray";
-        dudRecs.style.color = "white";
-        dudSamples.style.backgroundColor = "white";
-        dudSamples.style.color = "gray";
-    }
-    else {
-        dudSamples.style.backgroundColor = "gray";
-        dudSamples.style.color = "white";
-        dudRecs.style.backgroundColor = "white";
-        dudRecs.style.color = "gray";
-    }
-}
-
-dudRecs.addEventListener('click', recSampsDud);
-dudSamples. addEventListener('click', recSampsDud);
 
 const setup = async () => {
 
@@ -544,6 +537,148 @@ const setup = async () => {
         pressed = false;
     });
 
+    // Tutorial XY Pad Logic
+    var tutorialXYPad = document.getElementById("tutorial-xy-pad");
+    var tutorialThumbDrag = document.getElementById("tutorial-thumb-drag");
+    var tutorialPadPressed = false;
+    var tutorialThumbWidth = 50;
+    var tutorialAdjClientX = 0;
+    var tutorialAdjClientY = 0;
+
+    var tutorialEffect1Dist = 0;
+    var tutorialEffect2Dist = 0;
+    var tutorialEffect3Dist = 0;
+    var tutorialEffect4Dist = 0;
+    var tutorialDeadZoneDist = 0;
+
+    function tutorialDragging(e) {
+        if(tutorialPadPressed == true) {
+            const tutorialBoundingRect = tutorialXYPad.getBoundingClientRect();
+            if(e.clientX >= tutorialBoundingRect.left && e.clientX <= tutorialBoundingRect.right - tutorialThumbWidth && e.clientY >= tutorialBoundingRect.top + tutorialThumbWidth*0.75 && e.clientY <= tutorialBoundingRect.bottom - tutorialThumbWidth*0.25){
+                tutorialAdjClientX = (e.clientX - tutorialBoundingRect.left) / tutorialBoundingRect.width;
+                tutorialAdjClientY = (e.clientY - tutorialBoundingRect.top) / tutorialBoundingRect.height;
+                tutorialThumbDrag.style.left = `${e.clientX - tutorialBoundingRect.left - tutorialThumbWidth*0.5}px`;
+                tutorialThumbDrag.style.top = `${e.clientY - tutorialBoundingRect.top - tutorialThumbWidth*0.5}px`;
+
+                tutorialEffect1Dist = distance(tutorialAdjClientX, tutorialAdjClientY, effect1circlePos[0], effect1circlePos[1]);
+                tutorialEffect2Dist = distance(tutorialAdjClientX, tutorialAdjClientY, effect2circlePos[0], effect2circlePos[1]);
+                tutorialEffect3Dist = distance(tutorialAdjClientX, tutorialAdjClientY, effect3circlePos[0], effect3circlePos[1]);
+                tutorialEffect4Dist = distance(tutorialAdjClientX, tutorialAdjClientY, effect4circlePos[0], effect4circlePos[1]);
+                tutorialDeadZoneDist = distance(tutorialAdjClientX, tutorialAdjClientY, deadZoneCirclePos[0], deadZoneCirclePos[1]);
+
+                if(tutorialEffect1Dist <= effectCircleRadius){
+                    effect1dry.value = 1 - (tutorialEffect1Dist/effectCircleRadius);
+                }
+                else{
+                    effect1dry.value = 0;
+                }
+
+                if(tutorialEffect2Dist <= effectCircleRadius){
+                    effect2dry.value = 1 - (tutorialEffect2Dist/effectCircleRadius);
+                }
+                else{
+                    effect2dry.value = 0;
+                }
+
+                if(tutorialEffect3Dist <= effectCircleRadius){
+                    effect3dry.value = 1 - (tutorialEffect3Dist/effectCircleRadius);
+                }
+                else{
+                    effect3dry.value = 0;
+                }
+
+                if(tutorialEffect4Dist <= effectCircleRadius){
+                    effect4dry.value = 1 - (tutorialEffect4Dist/effectCircleRadius);
+                }
+                else{
+                    effect4dry.value = 0;
+                }
+
+                if(tutorialDeadZoneDist <= deadZoneCircleRadius){
+                    effect1dry.value = 0;
+                    effect2dry.value = 0;
+                    effect3dry.value = 0;
+                    effect4dry.value = 0;
+                }
+            }
+        }
+    }
+
+    function tutorialDraggingMobile(e) {
+        const tutorialBoundingRect = tutorialXYPad.getBoundingClientRect();
+        if(e.changedTouches[0].clientX >= tutorialBoundingRect.left && e.changedTouches[0].clientX <= tutorialBoundingRect.right && e.changedTouches[0].clientY >= tutorialBoundingRect.top && e.changedTouches[0].clientY<= tutorialBoundingRect.bottom){
+            tutorialAdjClientX = (e.changedTouches[0].clientX - tutorialBoundingRect.left) / tutorialBoundingRect.width;
+            tutorialAdjClientY = (e.changedTouches[0].clientY - tutorialBoundingRect.top) / tutorialBoundingRect.height;
+            tutorialThumbDrag.style.left = `${e.changedTouches[0].clientX - tutorialBoundingRect.left - tutorialThumbWidth*0.5}px`;
+            tutorialThumbDrag.style.top = `${e.changedTouches[0].clientY - tutorialBoundingRect.top - tutorialThumbWidth*0.5}px`;
+
+            tutorialEffect1Dist = distance(tutorialAdjClientX, tutorialAdjClientY, effect1circlePos[0], effect1circlePos[1]);
+            tutorialEffect2Dist = distance(tutorialAdjClientX, tutorialAdjClientY, effect2circlePos[0], effect2circlePos[1]);
+            tutorialEffect3Dist = distance(tutorialAdjClientX, tutorialAdjClientY, effect3circlePos[0], effect3circlePos[1]);
+            tutorialEffect4Dist = distance(tutorialAdjClientX, tutorialAdjClientY, effect4circlePos[0], effect4circlePos[1]);
+            tutorialDeadZoneDist = distance(tutorialAdjClientX, tutorialAdjClientY, deadZoneCirclePos[0], deadZoneCirclePos[1]);
+
+            if(tutorialEffect1Dist <= effectCircleRadius){
+                effect1dry.value = 1 - (tutorialEffect1Dist/effectCircleRadius);
+            }
+            else{
+                effect1dry.value = 0;
+            }
+
+            if(tutorialEffect2Dist <= effectCircleRadius){
+                effect2dry.value = 1 - (tutorialEffect2Dist/effectCircleRadius);
+            }
+            else{
+                effect2dry.value = 0;
+            }
+
+            if(tutorialEffect3Dist <= effectCircleRadius){
+                effect3dry.value = 1 - (tutorialEffect3Dist/effectCircleRadius);
+            }
+            else{
+                effect3dry.value = 0;
+            }
+
+            if(tutorialEffect4Dist <= effectCircleRadius){
+                effect4dry.value = 1 - (tutorialEffect4Dist/effectCircleRadius);
+            }
+            else{
+                effect4dry.value = 0;
+            }
+
+            if(tutorialDeadZoneDist <= deadZoneCircleRadius){
+                effect1dry.value = 0;
+                effect2dry.value = 0;
+                effect3dry.value = 0;
+                effect4dry.value = 0;
+            }
+        }
+    }
+
+    tutorialXYPad.addEventListener('mousedown', function(){
+        tutorialPadPressed = true;
+    });
+
+    tutorialXYPad.addEventListener('mousedown', tutorialDragging);
+
+    tutorialXYPad.addEventListener('mouseup', function(){
+        tutorialPadPressed = false;
+    });
+
+    tutorialXYPad.addEventListener('mousemove', tutorialDragging);
+
+    tutorialXYPad.addEventListener('touchstart', function(){
+        tutorialPadPressed = true;
+    });
+
+    tutorialXYPad.addEventListener('touchstart', tutorialDraggingMobile);
+
+    tutorialXYPad.addEventListener('touchmove', tutorialDraggingMobile);
+
+    tutorialXYPad.addEventListener('touchend', function(){
+        tutorialPadPressed = false;
+    });
+
     record1.addEventListener('click', function(){
         recordingToggle(0, r1, record1);
     })
@@ -592,20 +727,43 @@ const setup = async () => {
     }
 
     recordDud.addEventListener('click', function(){
-        dudRecordingToggle(recordDud);
-    })
-
-    function dudRecordingToggle(targetElement) {
-        dudRecordBool = !dudRecordBool;
-        if(dudRecordBool == true){
-            targetElement.style.backgroundColor = "red";
-            targetElement.style.color = "white";
+        recordBools[0] = !recordBools[0];
+        if(recordBools[0] == true){
+            record1.style.backgroundColor = "red";
+            record1.style.color = "white";
+            recordDud.style.backgroundColor = "red";
+            recordDud.style.color = "white";
+            r1.value = 1;
         }
         else {
-            targetElement.style.backgroundColor = "white";
-            targetElement.style.color = "black";
+            record1.style.backgroundColor = "white";
+            record1.style.color = "black";
+            recordDud.style.backgroundColor = "white";
+            recordDud.style.color = "black";
+            r1.value = 0;
         }
-    }
+    })
+
+    var toggleDud = document.getElementById("togglenull");
+    var pitchDud = document.getElementById("pitchnull");
+    var cropDud = document.getElementById("cropnull");
+    var feedbackDud = document.getElementById("feedbacknull");
+
+    toggleDud.addEventListener('click', function(){
+        toggleButton.click();
+    });
+
+    pitchDud.addEventListener('click', function(){
+        pitchButton.click();
+    });
+
+    cropDud.addEventListener('click', function(){
+        cropButton.click();
+    });
+
+    feedbackDud.addEventListener('click', function(){
+        feedbackButton.click();
+    });
 
     //play buttons
 
@@ -765,20 +923,59 @@ const setup = async () => {
         }
     }
 
-    playDud.addEventListener('click', function(){
-        playDudToggling(playDud);
-    });
-
-    function playDudToggling(targetElement) {
-        if(toggleDudBool == true){
-            playDudBool =! playDudBool;
-            if(playDudBool == true){
-                targetElement.style.backgroundColor = playPressedColor;
-            }
-            else{
-                targetElement.style.backgroundColor = "white";
-            }
+    playNullTop.addEventListener('mousedown', function(){
+        if(isRecsBool){
+            playOnToggling(0, p1, play1);
+        } else {
+            playOnToggling(8, ps1, sample1);
         }
+    })
+    playNullTop.addEventListener('mouseup', function(){
+        if(isRecsBool){
+            playOffToggling(p1, play1);
+        } else {
+            playOffToggling(ps1, sample1);
+        }
+    })
+
+    playNullBottom.addEventListener('mousedown', function(){
+        if(isRecsBool){
+            playOnToggling(0, p1, play1);
+        } else {
+            playOnToggling(8, ps1, sample1);
+        }
+    })
+    playNullBottom.addEventListener('mouseup', function(){
+        if(isRecsBool){
+            playOffToggling(p1, play1);
+        } else {
+            playOffToggling(ps1, sample1);
+        }
+    })
+
+    var dudRecs = document.getElementById("recs-button-dud");
+    var dudSamples = document.getElementById("samples-button-dud");
+
+    if(dudRecs) {
+        dudRecs.addEventListener('click', function(){
+            recsSampsToggle();
+            // Sync dud button colors with main buttons
+            dudRecs.style.backgroundColor = recsButton.style.backgroundColor;
+            dudRecs.style.color = recsButton.style.color;
+            dudSamples.style.backgroundColor = samplesButton.style.backgroundColor;
+            dudSamples.style.color = samplesButton.style.color;
+        });
+    }
+
+    if(dudSamples) {
+        dudSamples.addEventListener('click', function(){
+            recsSampsToggle();
+            // Sync dud button colors with main buttons
+            dudRecs.style.backgroundColor = recsButton.style.backgroundColor;
+            dudRecs.style.color = recsButton.style.color;
+            dudSamples.style.backgroundColor = samplesButton.style.backgroundColor;
+            dudSamples.style.color = samplesButton.style.color;
+        });
     }
 
     toggleButton.addEventListener('click', function() {
