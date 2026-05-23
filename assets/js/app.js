@@ -399,46 +399,39 @@ const setup = async () => {
     const mediaStreamDest = context.createMediaStreamDestination();
     effect4.node.connect(mediaStreamDest);
     
-    const globalMediaRecorder = new MediaRecorder(mediaStreamDest.stream, {
-        mimeType: 'audio/wav'
-    });
-    let recordedChunks = [];
+    let globalRecorder = null;
     let isRecordingGlobal = false;
     
     const globalRecordBtn = document.getElementById("global-record-btn");
     const globalSaveBtn = document.getElementById("global-save-btn");
     
+    // Initialize RecordRTC
+    globalRecorder = new RecordRTC(mediaStreamDest.stream, {
+        type: 'audio',
+        mimeType: 'audio/wav',
+        audioBitsPerSecond: 128000
+    });
+    
     globalRecordBtn.addEventListener('click', function(){
         isRecordingGlobal = !isRecordingGlobal;
         
         if(isRecordingGlobal) {
-            recordedChunks = [];
-            globalMediaRecorder.ondataavailable = function(event) {
-                if(event.data.size > 0) {
-                    recordedChunks.push(event.data);
-                }
-            };
-            globalMediaRecorder.start();
+            globalRecorder.startRecording();
             globalRecordBtn.style.backgroundColor = "red";
             globalRecordBtn.style.color = "white";
             globalRecordBtn.textContent = "stop";
         } else {
-            globalMediaRecorder.stop();
-            globalRecordBtn.style.backgroundColor = "white";
-            globalRecordBtn.style.color = "black";
-            globalRecordBtn.textContent = "record";
-            globalSaveBtn.style.display = "block";
+            globalRecorder.stopRecording(function(){
+                globalRecordBtn.style.backgroundColor = "white";
+                globalRecordBtn.style.color = "black";
+                globalRecordBtn.textContent = "record";
+                globalSaveBtn.style.display = "block";
+            });
         }
     });
     
     globalSaveBtn.addEventListener('click', function(){
-        const blob = new Blob(recordedChunks, { type: 'audio/wav' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'magic-house-recording.wav';
-        link.click();
-        URL.revokeObjectURL(url);
+        globalRecorder.save('magic-house-recording.wav');
         globalSaveBtn.style.display = "none";
     });
 
