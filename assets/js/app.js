@@ -396,42 +396,83 @@ const setup = async () => {
     effect4.node.connect(context.destination);
 
     // Global Recording Setup
-    const mediaStreamDest = context.createMediaStreamDestination();
-    effect4.node.connect(mediaStreamDest);
+    const scriptProcessor = context.createScriptProcessor(4096, 2, 2);
+    effect4.node.connect(scriptProcessor);
+    scriptProcessor.connect(context.destination);
     
-    let globalRecorder = null;
+    let audioBuffer = {
+        left: [],
+        right: []
+    };
     let isRecordingGlobal = false;
     
     const globalRecordBtn = document.getElementById("global-record-btn");
     const globalSaveBtn = document.getElementById("global-save-btn");
     
-    // Initialize RecordRTC
-    globalRecorder = new RecordRTC(mediaStreamDest.stream, {
-        type: 'audio',
-        mimeType: 'audio/wav',
-        audioBitsPerSecond: 128000
+    scriptProcessor.addEventListener('audioprocess', function(event) {
+        if(isRecordingGlobal) {
+            const left = event.inputBuffer.getChannelData(0);
+            const right = event.inputBuffer.getChannelData(1);
+            audioBuffer.left.push(...left);
+            audioBuffer.right.push(...right);
+        }
     });
     
     globalRecordBtn.addEventListener('click', function(){
         isRecordingGlobal = !isRecordingGlobal;
         
         if(isRecordingGlobal) {
-            globalRecorder.startRecording();
+            audioBuffer = { left: [], right: [] };
             globalRecordBtn.style.backgroundColor = "red";
             globalRecordBtn.style.color = "white";
             globalRecordBtn.textContent = "stop";
         } else {
-            globalRecorder.stopRecording(function(){
-                globalRecordBtn.style.backgroundColor = "white";
-                globalRecordBtn.style.color = "black";
-                globalRecordBtn.textContent = "record";
-                globalSaveBtn.style.display = "block";
-            });
+            globalRecordBtn.style.backgroundColor = "white";
+            globalRecordBtn.style.color = "black";
+            globalRecordBtn.textContent = "record";
+            globalSaveBtn.style.display = "block";
         }
     });
     
     globalSaveBtn.addEventListener('click', function(){
-        globalRecorder.save('magic-house-recording.wav');
+        // Encode to MP3 using lamejs
+        const leftChannel = new Float32Array(audioBuffer.left);
+        const rightChannel = new Float32Array(audioBuffer.right);
+        
+        const mp3Encoder = new lamejs.Mp3Encoder(2, context.sampleRate, 192);
+        const mp3Data = [];
+        
+        const blockSize = 18000;
+        for(let i = 0; i < leftChannel.length; i += blockSize) {
+            const left = leftChannel.slice(i, i + blockSize);
+            const right = rightChannel.slice(i, i + blockSize);
+            
+            // Convert float to int16
+            const leftInt = new Int16Array(left.length);
+            const rightInt = new Int16Array(right.length);
+            for(let j = 0; j < left.length; j++) {
+                leftInt[j] = Math.max(-1, Math.min(1, left[j])) * 0x7FFF;
+                rightInt[j] = Math.max(-1, Math.min(1, right[j])) * 0x7FFF;
+            }
+            
+            const mp3buf = mp3Encoder.encodeBuffer(leftInt, rightInt);
+            if(mp3buf.length > 0) {
+                mp3Data.push(mp3buf);
+            }
+        }
+        
+        const finalData = mp3Encoder.flush();
+        if(finalData.length > 0) {
+            mp3Data.push(finalData);
+        }
+        
+        const blob = new Blob(mp3Data, { type: 'audio/mp3' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'magic-house-recording.mp3';
+        link.click();
+        URL.revokeObjectURL(url);
         globalSaveBtn.style.display = "none";
     });
 
